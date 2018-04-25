@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		#wrap{
+			width:300px;
+			height:300px;
+			margin: 20px auto;
+			border:1px solid #000;
+		}
+		#list{
+			width:100%;
+			font-size: 0;
+		}
+		#list li{
+			display: inline-block;
+			width: 33%;
+			line-height: 30px;
+			height: 30px;
+			border-bottom: 1px  solid #000;
+			font-size: 16px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#list li.show{
+			background: #ccc;
+			color:#fff;
+		}
+		.cont div{
+			height: 270px;
+			width: 100%;
+			line-height: 270px;
+			text-align: center;
+			font-size: 40px;
+			display: none;
+		}
+		.cont div.show{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="list">
+			<li class="show">1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<div class="cont">
+			<div class="show">第一个</div>
+			<div>第二个</div>
+			<div>第三个</div>
+		</div>
+	</div>
+	<script>
+		var Table = function(obj){
+			//数据 实参
+			this.data = obj;
+			//取list父节点
+			this.list = document.querySelector(obj.parent);
+			//找list下li标签
+			this.lis = this.list.getElementsByTagName(obj.el);
+			//cont内容
+			this.cont = document.querySelector(obj.cont);
+			//cont下所有div标签
+			this.contDiv = this.cont.getElementsByTagName(obj.contel);
+			this.addEvent();
+		}
+		//addEvent给每一个li标签绑定事件
+		Table.prototype.addEvent = function(){
+			//this Table实例对象
+			var that = this;
+			//事件类型
+			var eventName = this.data.event;
+
+			for(var i=0,len=this.lis.length;i<len;i++){
+				//设置下标
+				this.lis[i].setAttribute('index',i);
+				this.lis[i].addEventListener(eventName,function(){
+					//this指向绑定事件的DOM节点
+					var ind = this.getAttribute('index');
+					for(var j=0;j<len;j++){
+						that.contDiv[j].classList.remove('show');
+						that.lis[j].classList.remove('show');
+					}
+					//显示对应内容
+					that.contDiv[ind].classList.add('show');
+					this.classList.add('show');
+				},false);
+			}
+		}
+
+		var obj = new Table({
+			parent:"#list",  // 要绑定事件的元素的父节点
+			cont:'.cont', //table切换的内容节点
+			contel:'div',  //table切换内容子节点
+		    el:"li",         // 要绑定事件的标签
+			event:'mouseover', // 事件：可以是onmouseover、也可以是onclick，绑定事件时请采用DOM2级事件绑定，兼容所有浏览器
+			isAuto:false,   // 是否自动切换，默认值为false，为默认值时可以不传递
+			timeOut:2000    // 自动切换的时间间隔，默认为3000
+		});
+		//obj.addEvent();
+	</script>
+</body>
+</html>

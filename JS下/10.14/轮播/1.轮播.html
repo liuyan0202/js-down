@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            list-style:none;
+        }
+        .box{
+           width:500px;
+           margin:50px auto;
+           font-size:0;
+           position:relative;
+           overflow:hidden;
+       }
+       ul{
+        width:2500px;
+       }
+       ul li{
+          width:500px;
+          float:left;
+       }
+       ul li img{
+           width:500px;
+       }
+       .left{
+        width:30px;
+        height:30px;
+        background:rgba(0,0,0,.7);
+        position:absolute;
+        left:10px;
+        top:50%;
+        margin-top:-15px;
+        color:#fff;
+        text-align:center;
+        line-height: 30px;
+        font-size:16px;
+        font-family:"楷体";
+        cursor:pointer;
+       }
+       .right{
+        width:30px;
+        height:30px;
+        background:rgba(0,0,0,.7);
+        position:absolute;
+        right:10px;
+        top:50%;
+        margin-top:-15px;
+        color:#fff;
+        text-align:center;
+        line-height: 30px;
+        font-size:16px;
+        font-family:"楷体";
+        cursor:pointer;
+       }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="list">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+        </ul>
+        <div class="left"><</div>
+        <div class="right">></div>
+    </div>
+    <script>
+        function Fun(str){
+            this.box=document.querySelector(str);
+            this.ul=document.querySelector("#list");
+            this.li=this.ul.children;
+            this.left=document.querySelector(".left");
+            this.right=document.querySelector(".right");
+            this.index=0;
+            this.say();
+            this.next();
+        }
+        Fun.prototype.say=function(){
+            var liw=this.li[0].offsetWidth;//li的宽
+            this.oneliw=liw;
+            var lix=this.li[0].cloneNode(true);
+            this.ul.appendChild(lix);
+            this.ul.style.width=liw*(this.li.length)+"px";
+        }
+        Fun.prototype.next=function(){
+                var that=this;
+                var len=this.li.length;
+                //console.log(len);
+            this.right.onclick=function(){
+                that.index++;
+                if(that.index>len-1){
+                    that.index=0;
+                    that.ul.style.marginLeft="0px";
+                }
+
+                var timer=null;
+                this.style.background="rgba(255,255,255,.4)";
+                //console.log(that.index);
+                timer=setInterval(function(){
+                    var l=that.ul.offsetLeft;//ul距左边的宽
+                    //console.log(l);
+                    if(l<=-that.index*that.oneliw){
+                        clearInterval(timer);
+                    }
+                    else{
+                        that.ul.style.marginLeft=(l-10)+"px";
+                    }
+                },10)
+
+            }
+            this.left.onclick=function(){
+                that.index--;
+                if(that.index<0){
+                    that.index=len-2;
+                    that.ul.style.marginLeft="-2000px";
+                }
+
+                var timer=null;
+                this.style.background="rgba(255,255,255,.4)";
+                //console.log(that.index);
+                timer=setInterval(function(){
+                    var l=that.ul.offsetLeft;//ul距左边的宽
+                    //console.log(l);
+                    if(l>=-that.index*that.oneliw){
+                        clearInterval(timer);
+                    }
+                    else{
+                        that.ul.style.marginLeft=(l+10)+"px";
+                    }
+                },10)
+
+            }
+        }
+
+        new Fun(".box");
+    </script>
+</body>
+</html>

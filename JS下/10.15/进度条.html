@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+            box-sizing:border-box;
+        }
+        .box{
+            width:400px;
+            height:300px;
+            background:#eee;
+            margin:50px auto;
+            padding-top:110px;
+        }
+        .line{
+            width:100%;
+            height:40px;
+            background:#ccc;
+            position: relative;
+        }
+        .copline{
+            width:40px;
+            background:skyblue;
+            height:100%;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        .act{
+            width:50px;
+            height:50px;
+            background:pink;
+            position:absolute;
+            left:0;
+            top:-5px;
+        }
+        p{
+            margin-top:30px;
+            text-align:center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="line">
+            <div class="copline"></div>
+            <span class="act"></span>
+        </div>
+        <p><span>0</span>/100%</p>
+
+    </div>
+
+</body>
+    <script>
+        function Fun(str){
+            this.parent=document.querySelector(str);
+            this.line=this.parent.querySelector(".line");
+            this.copline=this.parent.querySelector(".copline");
+            this.act=this.parent.querySelector(".act");
+            this.maxw=this.line.offsetWidth-this.act.offsetWidth;
+            this.p=document.querySelector("p");
+            this.span=this.p.querySelector("span");
+            this.addEvent();
+        }
+        Fun.prototype={
+            constructor:Fun,
+            offset:function(tar){
+                var t=0;l=0;
+                while(tar.offsetParent){
+                    l+=tar.offsetLeft;
+                    t+=tar.offsetTop;
+                    tar=tar.offsetParent;
+                }
+                return [l,t];
+            },
+            addEvent:function(){
+                var that=this;
+                this.act.onmousedown=function(e){
+                    var ev=e||window.event;
+                    //点击的那个盒子距浏览器的距离
+                    var left=that.offset(this)[0];
+                    //点击的位置距盒子边的距离
+                    var left1=ev.clientX-left;
+                   document.onmousemove=function(e){
+                        var ev=e||window.event;
+                        var lefts=ev.clientX-left1-that.offset(that.line)[0];
+                        if(lefts>=that.maxw){
+                            lefts=that.maxw;
+                        }
+                        else if(lefts<=0){
+                            lefts=0;
+                        }
+                        that.act.style.left=lefts+"px";
+                        that.copline.style.width=lefts+"px";
+                        var n=Math.round(lefts/that.maxw*100)+"%";
+                        that.span.innerHTML=n;
+
+                    }
+
+                }
+                document.onmouseup=function(){
+                    this.onmousemove=null;
+                }
+            }
+
+        }
+        new Fun(".box");
+
+    </script>
+</html>

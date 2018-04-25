@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        #box{
+            width:600px;
+            height:220px;
+            margin:50px auto;
+            position:relative;
+        }
+        ul,ul li,ul li img{
+            width:100%;
+            height:100%;
+        }
+        ul li{
+            position:absolute;
+            visibility:hidden;
+            opacity:0;
+            transition:all .5s;
+        }
+        ul li.show{
+            opacity:1;
+            z-index:10;
+            visibility:visible;
+        }
+
+        #prev{
+            position:absolute;
+            left:10px;
+            top:50%;
+            margin-top:-22px;
+            z-index:99;
+        }
+        #next{
+            position:absolute;
+            right:10px;
+            top:50%;
+            margin-top:-22px;
+            z-index:99;
+        }
+        ol{
+            position:absolute;
+            right:10px;
+            bottom:20px;
+            z-index:99;
+        }
+        ol li{
+            width:20px;
+            height:20px;
+            background:rgba(255,255,255,.4);
+            border-radius:50%;
+            margin-right:10px;
+            float:left;
+        }
+        ol li.show{
+            background:rgba(255,255,255,1);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="prev">
+            <img src="img/l.png" alt="" />
+        </div>
+        <div id="next">
+            <img src="img/r.png" alt="" />
+        </div>
+        <ul id="imgs">
+            <li class="show"><img src="img/1.jpg" alt="" /></li>
+            <li><img src="img/2.jpg" alt="" /></li>
+            <li><img src="img/3.jpg" alt="" /></li>
+            <li><img src="img/4.jpg" alt="" /></li>
+        </ul>
+        <ol id="dots">
+
+        </ol>
+    </div>
+    <script>
+        var oBox=document.getElementById("box");
+        var oUl=document.getElementById("imgs");
+        var oLi=oUl.getElementsByTagName("li");
+        var oDots=document.getElementById("dots");
+        var oPrev=document.getElementById("prev");
+        var oNext=document.getElementById("next");
+        var num=0;
+        for(var i=0,len=oLi.length;i<len;i++){
+            var aLi=document.createElement("li");
+            oDots.appendChild(aLi);
+        }
+
+        var aLis=oDots.children;
+        aLis[0].classList.add("show");
+        var change=function(){
+            oLi[num].classList.add("show");
+            aLis[num].classList.add("show");
+        }
+        oNext.onclick=function(){
+            num++;
+            if(num>=len){
+                num=0;
+            }
+            change();
+        }
+
+    </script>
+
+</body>
+</html>

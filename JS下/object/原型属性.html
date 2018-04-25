@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Typeof(){
+			this.value = "1601A";
+			this.Alert = function(){
+				alert(typeof this.value);
+			}
+		}
+		var obj = new Typeof();
+		obj.value = 1234;
+		console.log(Typeof.prototype)
+		//obj.Alert();
+		var str = obj.toString();
+		console.log(str);
+
+		var arr = new Array('1601a','好好学习');
+		console.log(Array.prototype)
+		arr.push('天天向上');
+		console.log(arr);
+
+		var str = new String('abc1234');
+		var str1 = str.substr(0,3);
+		console.log(String.prototype);
+		//str.push('b');
+		console.log(str1);
+	</script>
+</body>
+</html>

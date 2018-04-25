@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <table width="50%" border="1">
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var age=["19","88","30","100"],
+            name1=["李雪","崔珺","斌斌","卜子岚"];
+        var tbody=document.getElementsByTagName("tbody")[0];
+        for(var i=0;i<age.length;i++){
+            var tr=document.createElement("tr");
+            tbody.appendChild(tr);
+            for(var j=0;j<2;j++){
+                var td=document.createElement("td");
+                td.style.cursor="pointer";
+                td.style.textAlign="center";
+                tr.appendChild(td);
+                if(j==0){
+                    td.innerHTML=name1[i];
+                    td.addEventListener("click",function(){
+                        alert(this.nextElementSibling.innerHTML);
+                    },false);
+                }
+                if(j==1){
+                    td.innerHTML=age[i];
+                    td.addEventListener("click",function(){
+                        alert(this.previousElementSibling.innerHTML);
+                    },false);
+                }
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

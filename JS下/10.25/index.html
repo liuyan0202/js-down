@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .box{
+            width:400px;
+            height:auto;
+            margin:50px auto;
+        }
+        input{
+            width:400px;
+            height:50px;
+            border:1px solid #000;
+            outline:none;
+            text-indent:20px;
+            font-size:20px;
+        }
+        ul{
+            width:400px;
+            height:auto;
+            border-left:1px solid #ccc;
+            border-right:1px solid #ccc;
+        }
+        ul li{
+            width:100%;
+            height:40px;
+            line-height:40px;
+            text-indent:20px;
+            border-bottom:1px solid #ccc;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" name="" placeholder="请输入邮箱">
+        <ul id="list">
+
+        </ul>
+    </div>
+</body>
+    <script>
+        var data=[
+            "@163.com",
+            "@126.com",
+            "@qq.com",
+            "@sohu.com",
+            "@sina.com"
+        ];
+        var input=document.querySelector("input");
+        var ul=document.querySelector("ul");
+        input.oninput=function(){
+            var intval=this.value;
+            var str="";
+            if(intval==""){
+                ul.innerHTML="";
+            }
+            else{
+                var reg=new RegExp("^"+intval);
+                var newdata=data.filter(function(v) {
+                    return reg.test(v);
+            })
+            }
+            newdata.forEach(function(v,i){
+                str+="<li>"+v+"</li>";
+            })
+            ul.innerHTML=str;
+        }
+        var sum=0;
+        document.onkeyup=function(e){
+            var e=e||window.event;
+            var tar=e.target||e.srcElement;
+            var lis=ul.children;
+            for(var i=0;i<lis.length;i++){
+                lis[i].onclick=function(){
+                    input.value=this.innerHTML;
+                    for(var j=0;j<lis.length;j++){
+                        lis[j].style.background="none";
+                    }
+                    this.style.background="skyblue";
+                    ul.style.display="none";
+                }
+            }
+            if(e.keyCode===40){
+                for(var i=sum;i<lis.length;i++){
+                     sum++;
+                     if(sum>lis.length-1){
+                        sum=0;
+                     }
+                     for(var k=0;k<lis.length;k++){
+                        lis[k].style.background="none";
+                     }
+                    lis[i].style.background="skyblue";
+                    return;
+                }
+            }
+            else if(e.keyCode===38){
+
+            }
+        }
+
+
+
+    </script>
+</html>

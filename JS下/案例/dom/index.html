@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			list-style: none;
+		}
+		#wrap{
+			width:600px;
+			height: 220px;
+			margin: 100px auto;
+			position: relative;
+		}
+		#wrap ul,#wrap ul li,#wrap ul li img,.slide{
+			width:100%;
+			height: 100%;
+		}
+		#wrap ul{
+			position: relative;
+		}
+		#wrap ul li{
+			position: absolute;
+			visibility: hidden;
+			opacity: 0;
+			transition: all .5s;
+			-webkit-transition: all .5s;
+		}
+		#wrap ul li.show{
+			z-index: 10;
+			opacity: 1;
+			visibility: visible;
+		}
+		#wrap ol{
+			position: absolute;
+			bottom: 20px;
+			width:100%;
+			height: 20px;
+			z-index: 20;
+			line-height: 20px;
+			text-align: right;
+		}
+		#wrap ol li{
+			display: inline-block;
+			width:10px;
+			height: 10px;
+			border-radius: 50%;
+			background: rgba(255,255,255,.6);
+			margin-right:5px;
+			border:1px solid red;
+		}
+		#wrap ol li.show{
+			background: rgba(255,255,255,1);
+		}
+		#wrap span{
+			position: absolute;
+			z-index: 20;
+			top:50%;
+			width:40px;
+			height: 80px;
+			background: rgba(0,0,0,.8);
+			margin-top:-40px;
+			text-align: center;
+			line-height: 80px;
+			font-size: 40px;
+			color:#fff;
+			cursor: pointer;
+
+		}
+		#wrap span.left{
+			left:0;
+		}
+
+		#wrap span.right{
+			right:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="slide">
+			<ul>
+				<li class="show"><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/4.jpg" alt=""></li>
+			</ul>
+			<!--放分页-->
+			<ol></ol>
+			<span class="left"><</span>
+			<span class="right">></span>
+		</div>
+	</div>
+</body>
+<script>
+	function Slide() {
+		var parent = document.querySelector('.slide'),
+		//装图片的ul
+			picBox = parent.getElementsByTagName('ul')[0],
+		//所有的图片
+			picLi = picBox.getElementsByTagName('li'),
+		//ol
+			indBox = parent.getElementsByTagName('ol')[0],
+			left = parent.getElementsByClassName('left')[0],
+			right = parent.getElementsByClassName('right')[0],
+			timer = null;
+		var index = 0;
+		//创建分页li
+		for(var i=0,len=picLi.length;i<len;i++){
+			var newLi = document.createElement('li');
+			newLi.className = 'a';
+			indBox.appendChild(newLi);
+		}
+		//找第一个分页li
+		var indLI = indBox.children;
+		indLI[0].classList.add('show');
+		var change = function(){
+			for(var j=0;j<len;j++){
+				picLi[j].classList.remove('show');
+				indLI[j].classList.remove('show');
+			}
+			picLi[index].classList.add('show');
+			indLI[index].classList.add('show');
+		};
+		//点击right按钮
+		right.onclick = function() {
+			index++;
+			if(index >= len){
+				index = 0;
+			}
+			change();
+		}
+		left.onclick = function(){
+			index--;
+			if(index < 0){
+				index = len - 1;
+			}
+			change();
+		}
+		for(let k=0;k<len;k++){
+			indLI[k].onclick = function () {
+				index = k;
+				change();
+			}
+		}
+		function auto() {
+			timer = setInterval(function(){
+				right.click();
+			},1000);
+		}
+		auto();
+
+		parent.onmouseover = function () {
+			clearInterval(timer);
+		}
+		parent.onmouseout = auto;
+	}
+	Slide()
+</script>
+</html>

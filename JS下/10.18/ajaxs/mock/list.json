@@ -1,0 +1,39 @@
+{
+    "data": [
+    {
+        "id": 1,
+        "img": "images/img1.jpg",
+        "title": "科斯塔个人声明：我必须回马竞切尔西不放我走"
+    }, 
+    {
+        "id": 2,
+        "img": "images/img2.jpg",
+        "title": "2017FIFA最佳主帅12人候选名单：齐达内领衔"
+    }, 
+    {
+        "id": 3,
+        "img": "images/img3.jpg",
+        "title": "揭秘新疆喀纳斯湖水怪，真相背后疑为巨型哲罗蛙"
+    }, 
+    {
+        "id": 4,
+        "img": "images/img4.jpg",
+        "title": "U12比赛中国少年遭巴西0-20血洗 对手后空翻庆祝"
+    },
+    {
+        "id": 5,
+        "img": "images/img5.jpg",
+        "title": "《霸篮少年》第16话 球衣的激励"
+    },
+    {
+        "id": 6,
+        "img": "images/img6.jpg",
+        "title": "部分上港球迷围堵恒大远征军 篡改皇后经典歌曲"
+    },
+    {
+        "id": 7,
+        "img": "images/img7.jpg",
+        "title": "十年耕耘国家女冰华丽转身 小小冰球成“红娘”"
+    }
+  ]
+}

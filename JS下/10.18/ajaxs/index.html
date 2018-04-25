@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+       // 1、编写ajax请求，请求mock/list.json，请求时将index这个字符串传入pageType这个参数内。
+       // 2、将请求到的数据进行遍历渲染到DOM中，样式请参照效果图。
+       function ajax(obj){
+            var xhr=null;
+            if(window.XMLHttpRequest){
+                xhr=new XMLHttpRequest();
+            }
+            else{
+                xhr=new ActiveXObject("Microsoft.XMLHTTP")
+            }
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status===200){
+                        console.log(xhr.responseText());
+                    }
+                }
+            }
+            if(obj.method==="get"){
+                xhr.open(obj.method,obj.url,obj.async);
+                xhr.send(null);
+            }
+            else if(obj.method==="post"){
+                xhr.setRequestHeader('content-type','applaction/x-www-form-urlencoded');
+                xhr.open(obj.method,obj.url,obj.async);
+                xhr.send();
+            }
+       }
+       ajax({
+            method:"get",
+            url:"list.json",
+            async:"true"
+       })
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+事件对象.clientX/clientY
+	鼠标距浏览器窗口的距离 x和y轴的距离
+事件对象.screenX/screenY
+	鼠标距屏幕的距离
+事件对象.pageX/pageY
+	鼠标距页面的距离
+
+dom.offsetHeight / offsetWidth
+	功能：取当前元素的高度 （padding+border+width）
+	返回值：nummber
+dom.style.width / dom.style.height
+	功能：当前元素行内样式的宽高
+	返回值：string
+
+
+非IE下阻止事件冒泡
+	事件对象.stopPropagation()
+IE下阻止事件冒泡
+	事件对象.cancelBubble = true;
+
+非IE下阻止事件默认行为
+	事件对象.preventDefault()
+IE下阻止事件默认行为
+	事件对象.returnValue = false;
+
+document.forms  / document.表单name属性值
+	功能：取页面所有的form表单
+	返回值：元素集合
+

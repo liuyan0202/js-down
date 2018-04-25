@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        ul{
+            margin-left:50px;
+        }
+        ul li{
+            float:left;
+            margin-right:10px;
+        }
+        #text{
+            margin:30px 0 20px 50px;
+        }
+        ol{
+            margin-left:50px;
+            margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="text">
+    <input type="button" value="添加医院" id="but">
+    <ul id="ul">
+
+    </ul>
+    <ol id="list">
+
+    </ol>
+    <script>
+        var arr=["北京医院","309医院","空军医院","海军医院","总医院"];
+        var oText=document.getElementById("text"),
+            oBtn=document.getElementById("but"),
+            oList=document.getElementById("list"),
+            oUl=document.getElementById("ul");
+        var num=0;
+
+
+
+        for(var i=0;i<arr.length;i++){
+            var aLi=document.createElement("li");
+            aLi.innerHTML=arr[i];
+            oUl.appendChild(aLi);
+            (function(n){
+                oUl.children[n].onclick=function(){
+                    num++;
+                for(var j=0;j<arr.length;j++){
+                    oUl.children[j].style.background="";
+                }
+                oUl.children[n].style.background="blue";
+                var oLi=document.createElement("li");
+                oList.appendChild(oLi);
+                oLi.innerHTML=oUl.children[n].innerHTML;
+                oList.insertBefore(oLi,oList.firstChild);
+
+                var oSel=document.createElement("button");
+                oSel.innerHTML="删除";
+                oLi.appendChild(oSel);
+                oSel.style.marginLeft="10px";
+                oSel.onclick=function(){
+                    oList.removeChild(this.parentNode);
+                }
+                if(num>5){
+                    oLi.innerHTML="";
+                }
+            };
+            })(i);
+
+        };
+        oBtn.onclick=function(){
+            num++;
+            var oLi=document.createElement("li");
+            oLi.innerHTML=oText.value;
+            oList.insertBefore(oLi,oList.firstChild);
+            var oSel=document.createElement("button");
+                oSel.innerHTML="删除";
+                oLi.appendChild(oSel);
+                oSel.style.marginLeft="10px";
+                oSel.onclick=function(){
+                    oList.removeChild(this.parentNode);
+                }
+            if(num>5){
+                oLi.innerHTML="";
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

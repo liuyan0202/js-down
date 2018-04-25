@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <textarea style="width:300px;height:300px;display: block;"></textarea>
+    <button>提交</button>
+    <script>
+        var arr=['浏览器','电脑','鼠标'];
+        var textarea=document.getElementsByTagName("textarea")[0],
+            btn=document.getElementsByTagName('button')[0];
+        btn.onclick=function(){
+            var val=textarea.value;
+            for(var i=0;i<arr.length;i++){
+                var reg=RegExp(arr[i],'g');
+                var str="";
+                for(var j=0;j<arr[i].length;i++){
+                    str+="*";
+                }
+                val=val.replace(reg,str);
+
+            }
+            alert(val);
+        }
+
+    </script>
+
+</body>
+</html>

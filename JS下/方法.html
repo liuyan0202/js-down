@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" data="123"></div>
+    <div class="cont"></div>
+
+
+</body>
+    <script>
+
+        /*//1.forEach遍历
+        var arr=["a","b","c","d"];
+        //可直接写arr.forEach(alert);
+        //或
+        arr.forEach(function(v){
+            alert(v);
+        })
+
+
+        //2.filter 把a过滤掉
+        var arr=['a','b','c'];
+        var newarr=arr.filter(function(v,i){
+            return "a" != v;//返回除了"a"的值
+        })
+        console.log(newarr);
+
+
+        //3.map 返回新数组["aA","bB","cC"];
+        var arr=['a','b','c'];
+        var newarr=arr.map(function(v,i){
+            return v+v.toUpperCase();
+        })
+        console.log(newarr);
+
+        //4.获取URL地址，放到一个对象里{name:"zs",age:13}
+        //file:///C:/Users/鞠一帆/Desktop/JS下/方法.html?name=zs&age=13
+        function getAttrurl(){
+            //从问号开始向后截取
+            var url=document.location.search;
+            var reg=/[\?&](\w+)=([^\?&]+)/g;//从?或&后面到除了?和&为止的中间的值
+             var urldate={};
+            url.replace(reg,function($0,$1,$2){
+            //$0是?name=zs &age=13 找全部
+            //$1是name age $1找第一组
+            //$2是zs 13 $2找第二组
+                urldate[$1]=$2;
+            })
+            return urldate;
+        }console.log(getAttrurl());*/
+
+        /*
+        var str="?name=zs&age=19";
+        function getAttrurl(arr,n){
+            var reg=/[\?&](\w+)=([^\?&]+)/g;
+            var strs='';
+           arr.replace(reg,function($0,$1,$2){
+            if($1==n){
+                strs=$2;
+            }
+
+            })
+
+           return strs;
+        }
+        console.log(getAttrurl(str,"name"));*/
+
+        /*
+        //获取url地址参数
+         function getUrl(par){
+            var url=location.search.slice(1);
+            var reg=new RegExp(par+'=([^&]+)');
+            return reg.exec(url)[1];
+        }
+       console.log(getUrl("name"));*/
+
+
+
+        /*5.封装forEach()方法;
+          用于遍历数组及对象，i为数组的索引或对象的键，v为每一个索引或键对应的值*/
+           /*function each(a,b){
+                for(var i=0;i<a.length;i++){
+                    b(i,a[i]);
+                }
+           }
+           each(["red","green","blue"],function(i,v){
+                console.log("值是"+v+"  下标是"+i);
+           })*/
+
+
+           /*6.封装getAttribute,setAttribute
+             attr("data")用于获取dom元素上data属性的属性值
+             attr("name","ly")用于将dom元素上的name属性设置为ly*/
+            /* function $(str){
+                var tar=document.querySelector(str);//获取dom节点
+                return {
+                    attr:function(){
+                        if(arguments.length===1){
+                            return tar.getAttribute(arguments[0]);
+                        }else{
+                            tar.setAttribute(arguments[0],arguments[1]);
+                        }
+                    }
+                }
+             }
+             console.log($("#box").attr("data"));
+             $(".cont").attr("name","ly");*/
+
+             //7.封装获取该元素到浏览器的窗口的距离
+            function off(tar){
+                var t=0,l=0;
+                while(tar.offsetParent){
+                    t+=tar.offsetTop;
+                    l+=tar.offsetLeft;
+                }
+                return {top:t,left:l};
+            }
+    </script>
+</html>

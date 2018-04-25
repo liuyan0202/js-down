@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		/*var arr = [1,4,5,6,8,-2];
+		console.log(Math.min.apply(Array,arr));
+		/*var arr  = new Array()
+		var str = new String();*/
+		/*var n = "zs",a=13;
+		function abc(){
+			alert('姓名'+this.n+',年龄'+this.a);
+		}*/
+		//函数调用 this指向执行环境 window
+		//abc();
+
+		/*var info = {
+			n:'ls',
+			a:14
+		}
+
+		var info1 = {
+			n:'lxs',
+			a:20
+		}
+		//隐式调用  this指向修改过后的对象
+		abc.apply(info);
+		abc.call(info1);*/
+		//abc.apply(null);
+
+		function check(n,num,cla){
+			console.log(cla+'班有'+num+'个人');
+			return typeof n;
+		}
+		//alert(check('str'));
+
+		//alert(check.apply(null,[1234,57,'1601A']));
+		alert(check.call(null,[],56,'1601B'));
+
+
+		
+	
+
+	</script>
+</body>
+</html>

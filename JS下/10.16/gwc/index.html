@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="wrap">
+		<div id="left">
+		<!-- <dl>
+			<dt><img src="img/shirt1.gif" /></dt>
+			<dd>
+				<p>T恤1</p>
+				<p>价格:$ 18</p>
+			</dd>
+		</dl> -->
+		</div>
+		<div id="right">
+			<h1>购物车</h1>
+			<ul class="car_tit">
+				<li>
+					<span>Name</span>
+					<span>Quantity</span>
+					<span>Price</span>
+					<span>小计</span>
+				</li>
+			</ul>
+			<ul class="car_cont">
+
+			</ul>
+			<p class="he">
+				合计：<em class="heji">$0</em>
+			</p>
+			<div class="foot">
+				拖动商品添加到购物车
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var data = [
+		{"img":"img/shirt1.gif","pic":25,"name":"Balloon"},
+		{"img":"img/shirt2.gif","pic":27,"name":"Balloon1"},
+		{"img":"img/shirt3.gif","pic":28,"name":"Balloon2"},
+		{"img":"img/shirt4.gif","pic":20,"name":"Balloon6"},
+		{"img":"img/shirt5.gif","pic":22,"name":"Balloon3"},
+		{"img":"img/shirt6.gif","pic":60,"name":"Balloon4"}
+	];
+
+	function Gwc(str,obj){
+		this.parent=document.querySelector(str);
+		this.left=document.getElementById("left");
+		this.right=document.getElementById("right");
+		this.ul=document.getElementsByClassName("car_tit")[0];
+		this.objs=obj;
+		this.init();
+
+	}
+	Gwc.prototype={
+		constructor:Gwc,
+		init:function(){
+			var str=``;
+			this.objs.forEach(function(v,i){
+				str+=`<dl>
+						<dt><img src="${v.img}" draggable='false'/></dt>
+						<dd>
+							<p>${v.name}</p>
+							<p>价格:$ ${v.pic}</p>
+						</dd>
+					  </dl>`
+			})
+			this.left.innerHTML=str;
+			this.dl=this.left.children;
+			var that=this;
+			for(var i=0;i<this.dl.length;i++){
+				var lefts,tops,newdl;
+				this.dl[i].onmousedown=function(e){
+					var ev=e||window.event;
+					newdl=this.cloneNode(true);//克隆节点dl
+					that.left.appendChild(newdl);
+					newdl.style.position="absolute";
+					var l=this.offsetLeft-5,//dl的left值
+						t=this.offsetTop-20;//dl的top值
+					newdl.style.left=l+"px";//新的dl的位置
+					newdl.style.top=t+"px";
+					var left=ev.clientX-l,//鼠标点击的位置到这个dl的距离
+						top=ev.clientY-t;
+					document.onmousemove=function(e){
+						var ev=e||window.event;
+						lefts=ev.clientX-left;//移动的时候dl盒子到浏览器的距离
+						tops=ev.clientY-top;
+						newdl.style.left=lefts+"px";
+						newdl.style.top=tops+"px";
+					}
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						var minl=that.right.offsetLeft,
+							maxl=minl+that.right.offsetWidth;
+						if(lefts>minl&&lefts<maxl){
+							var Tname = newdl.getAttribute('name'),
+							Tpic = newdl.getAttribute('pic');
+						var lis = that.ul.children;
+							console.log(Tname,Tpic);
+							/*var Tname=newdl.getAttribute("name"),
+								Tpic=newdl.getAttribute("pic"),
+								lis=that.ul.children;
+								console.log(Tname);*/
+								if(arr.indexOf(Tname)==-1){
+									arr.push(Tname);
+									console.log(arr.push);
+								}
+						}
+						else{
+							alert("没在购物车里");
+
+						}
+						that.left.removeChild(newdl);
+
+					}
+				}
+			}
+		}
+
+	}
+	new Gwc("#wrap",data);
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .wrap{
+            width:400px;
+            height:200px;
+            background:skyblue;
+            margin:100px auto;
+            overflow:hidden;
+            position:relative;
+
+            /* overflow:hidden; */
+        }
+        .moveBox{
+            width:1400px;
+            font-size:0;/* display:inline-block;默认有三像素间距 */
+
+        }
+        .moveBox p{
+            width:200px;
+            height:200px;
+            display:inline-block;
+            font-size:100px;
+            line-height:200px;
+            color:pink;
+            text-align:center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="moveBox">
+            <p>那</p>
+            <p>年</p>
+            <p>花</p>
+            <p>开</p>
+            <p>月</p>
+            <p>正</p>
+            <p>圆</p>
+        </div>
+    </div>
+    <script>
+        function Fun(str,n){
+            this.n=n;
+            this.wrap=document.querySelector(str);
+            this.moveBox=document.querySelector(".moveBox");
+            this.p=this.moveBox.children;
+            this.pw=this.p[0].offsetWidth;
+            this.say();
+        }
+        Fun.prototype.say=function(){
+            for(var i=0,len=this.p.length;i<len;i++){
+                this.moveBox.append(this.p[i].cloneNode(true));
+            }
+            this.moveBox.style.width=this.pw*len*2+"px";
+            this.move();
+
+        }
+        Fun.prototype.move=function(){
+            var moveBoxw=this.moveBox.offsetWidth/2;
+            var that=this;
+            setInterval(function(){
+                var l=that.moveBox.offsetLeft;
+                if(l<=-moveBoxw){
+                    that.moveBox.style.marginLeft="0px";
+                }
+                else{
+                    that.moveBox.style.marginLeft=(l-10)+"px";
+                }
+
+
+            },this.n);
+
+        }
+
+        var obj=new Fun(".wrap",100);
+    </script>
+
+</body>
+</html>

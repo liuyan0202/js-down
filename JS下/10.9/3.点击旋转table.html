@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .wrap,.cont{
+            width:280px;
+            height:280px;
+        }
+        .wrap{
+            margin:50px auto;
+            position:relative;
+            transition:transform 1s;
+        }
+        .cont{
+            border-radius:50%;
+            background:red;
+            text-align:center;
+            line-height:280px;
+            color:#fff;
+            font-size:40px;
+            font-weight:800;
+            transition:all 1s;
+        }
+        .box span{
+            width:80px;
+            height:80px;
+            border-radius:50%;
+            line-height:80px;
+            text-align:center;
+            background:#999;
+            position:absolute;
+            color:#fff;
+            font-size:16px;
+            cursor:pointer;
+            transition:all 1s;
+            z-index:20;
+        }
+        .box span:nth-of-type(1){
+            top:-40px;
+            left:100px;
+        }
+        .box span:nth-of-type(2){
+            top:100px;
+            right:-30px;
+        }
+        .box span:nth-of-type(3){
+            bottom:-40px;
+            left:100px;
+        }
+        .box span:nth-of-type(4){
+            top:100px;
+            left:-40px;
+        }
+        .show{
+            border:2px solid yellow;
+        }o
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <span box-color="skyblue" class="show">skyblue</span>
+            <span box-color="pink">pink</span>
+            <span box-color="lime">lime</span>
+            <span box-color="orange">orange</span>
+        </div>
+        <div class="cont">
+
+        </div>
+    </div>
+    <script>
+        var wrap=document.querySelector(".wrap"),
+            box=document.querySelector(".box"),
+            oSpan=box.children,
+            cont=document.querySelector(".cont");
+        cont.style.background=oSpan[0].getAttribute("box-color");
+        cont.innerHTML=oSpan[0].innerHTML;
+        for(var i=0;i<oSpan.length;i++){
+            (function(a){
+                oSpan[a].onclick=function(){
+                    cont.innerHTML=this.innerHTML;
+                    cont.style.background=this.getAttribute("box-color");
+                    wrap.style.transform="rotate("+(-a*90)+"deg)";
+                    cont.style.transform="rotate("+(a*90)+"deg)";
+
+                    for(var j=0;j<oSpan.length;j++){
+                        oSpan[j].classList.remove("show");
+                        oSpan[j].style.transform="rotate("+(a*90)+"deg)";
+
+                    }
+                    this.classList.add("show");
+
+                }
+
+            })(i)
+        }
+    </script>
+</body>
+</html>

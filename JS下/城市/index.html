@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			list-style: none;
+		}
+		.box{
+			width:600px;
+			height: 600px;
+			border:4px solid #000;
+		}
+		.title{
+			width: 100px;
+			height: 100%;
+			overflow-y:scroll;
+			overflow-x:hidden;
+			float: left;
+		}
+		.title li{
+			width: 100%;
+			text-align: center;
+			height: 50px;
+			line-height: 50px;
+			border-bottom: 1px solid #eee;
+		}
+		.cont{
+			float: left;
+			width: 500px;
+			height: 100%;
+		}
+		.cont a{
+			display: inline-block;
+			padding: 15px 30px;
+			color:#333;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="title"></ul>
+		<div class="cont"></div>
+	</div>
+</body>
+<script src="data.js"></script>
+<script>
+	var str = "";
+	var ttile = document.getElementsByClassName('title')[0];
+	var cont = document.querySelector('.cont');
+	for(var key in hotel_hotData){
+		str += '<li>'+key+'</li>';
+	}
+	ttile.innerHTML = str;
+	var reg = /[\u4e00-\u9fa5]+/g;
+	ttile.onclick  = function(e){
+		cont.innerHTML = "";
+		var ev = e || window.event;
+		var tar = ev.srcElement || ev.target;
+		if(tar.tagName === 'LI'){
+			var tit = tar.innerHTML;
+			var data = hotel_hotData[tit].match(reg);
+			for(var i=0;i<data.length;i++){
+				var a = document.createElement('a');
+				a.innerHTML = data[i];
+				cont.appendChild(a);
+			}
+		}
+	}
+	ttile.children[0].click();
+</script>
+</html>

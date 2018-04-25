@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-style: normal;
+    font-size: .14rem;
+    font-weight: normal;
+    list-style: none;
+    box-sizing: border-box;
+    /* text-size-adjust: 100%; */
+}
+
+html {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 100px;
+}
+
+input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+a,
+button,
+input,
+optgroup,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    width: 818px;
+    height: 512px;
+    background: #DDDDDD;
+    margin: 0 auto;
+}
+
+header {
+    width: 800px;
+    height: 59px;
+    border-radius: 0 0 20px 20px;
+    background: #EEEEEE;
+    margin: 0 auto;
+    box-shadow: -2px 0 5px #B7B7B7, 0 -2px 5px #B7B7B7;
+    text-align: center;
+    line-height: 59px;
+    border-bottom: 1px solid #B7B7B7;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+section {
+    width: 800px;
+    height: 400px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 40px auto 0;
+    box-shadow: 0 2px 5px #B7B7B7;
+    padding: 17px;
+}
+
+section .left1 {
+    width: 522px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #ccc;
+}
+
+section .left1 .box1 {
+    width: 100%;
+    height: 60px;
+}
+
+section .left1 .box1 p {
+    width: 200px;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+section .left1 .box1 p b {
+    font-size: 30px;
+    font-weight: 800;
+    display: block;
+    text-align: right;
+}
+
+section .left1 .box1 p span {
+    font-size: 14px;
+    color: #999;
+    display: block;
+    text-align: right;
+}
+
+section .left1 .box1 p i {
+    font-size: 14px;
+    color: #999;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+}
+
+section .left1 .box1 label {
+    width: 280px;
+    height: 60px;
+    float: left;
+    background: yellow;
+    margin-left: 20px;
+    border: 1px solid #999;
+    border-radius: 12px;
+    background: #F6F6F6;
+    box-shadow: 0 2px 5px #999 inset;
+    position: relative;
+}
+
+section .left1 .box1 label input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: none;
+    font-size: 18px;
+    text-indent: 10px;
+}
+
+section .left1 .box1 label small {
+    padding: 0 4px;
+    border: 1px solid red;
+    text-align: center;
+    line-height: 26px;
+    color: #813030;
+    position: absolute;
+    right: 20px;
+    bottom: -20px;
+    font-size: 12px;
+    background: rgba(255, 150, 150, 0.6);
+    border-radius: 5px;
+    display: none;
+}
+
+section .left1 .box1:nth-of-type(1)~.box1 {
+    margin-top: 35px;
+}
+
+section .right {
+    float: left;
+    width: 242px;
+    height: 100%;
+}
+
+section .right button {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    color: #eee;
+    background: #999;
+    display: block;
+    margin: 16px auto 0;
+    border: 0;
+}
+
+section .right form {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #FF9999;
+    margin: 18px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section .right form input {
+    margin-right: 8px;
+}
+
+section .right p {
+    margin: 16px auto 0;
+    text-align: center;
+}
+
+a {
+    color: #0090CE;
+    text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <form action="index_submit" method="post">
+        姓名：<input type="text" name="user"/></br>
+        密码：<input type="password" name="pwd"/></br>
+        <button type="">提交</button>
+    </form>
+</body>
+
+    <script>
+        var arr={
+            name:"zs",
+            age:13,
+            b:{
+                name:"ls",
+                age:14
+            }
+        }
+        console.log(JSON.stringify(arr));
+        var str="1232343"
+        console.log(JSON.parse(str));
+        eval('('+str+')');
+
+
+        //创建ajax
+        var xhr=new XMLHttpRequest();
+        //连接服务器
+        xhr.open("get",地址,false);
+        //发送数据
+        xhr.send(null);
+        //接收返回值
+        xhr.responseText;
+    </script>
+</html>

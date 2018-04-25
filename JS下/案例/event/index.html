@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="wrap" style="width: 600px;height: 600px;border:1px solid red">
+	<p style="width: 400px;height: 200px;border:1px solid #999">
+		<button id="btn" onclick="fun1('abc')">按钮</button>
+	</p>
+</div>	
+</body>
+<script>
+	var btn = document.querySelector('#btn'),
+		p = btn.parentNode,
+		wrap = p.parentNode;
+	function fun1(a) {
+		alert(a)
+	}
+	/*btn.onclick = function(){
+		alert('btn');
+	}
+
+	p.onclick = function () {
+		alert('p');
+	}
+	wrap.onclick = function() {
+		alert('wrap');
+	}*/
+
+	/*btn.addEventListener('click',function(){
+		alert('btn');
+	},true);
+	p.addEventListener('click',function(){
+		alert('p');
+	},true)
+	wrap.addEventListener('click',function(){
+		alert('wrap');
+	},true)*/
+
+	/*btn.attachEvent('onclick',function(){
+		alert('123')
+	})*/
+	
+/*	btn.addEventListener('click',function(){
+		//六位随机数
+		var str = "";
+		for(var i=0;i<6;i++){
+			var num = Math.floor(Math.random()*9);
+			console.log(i);
+			if(str.indexOf(num) == -1){
+				str+=num;
+			}else{
+				i--;
+			}
+		}
+		alert(str);
+	},false);
+	btn.addEventListener('click',function(){
+		//跳转页面
+		window.location.href = "http://www.baidu.com";
+	},false);*/
+
+
+
+	/*if(btn.addEventListener){
+		btn.addEventListener('click',function(){},false)
+	}else if(btn.attachEvent){
+		btn.attachEvent('onclick',function(){})
+	}else{
+		btn.onclick = function(){
+
+		}
+	}*/
+	//
+	/*function addEvent(tar,type,fun) {
+		if(tar.addEventListener){
+			tar.addEventListener(type,fun,false);
+		}else if(tar.attachEvent){
+			tar.attachEvent('on'+type,fun)
+		}else{
+			tar['on'+type] = fun;
+		}
+	}
+
+	addEvent(btn,'click',function(){
+		alert('这是按钮');
+	})
+	addEvent(p,'mousemove',function(){
+		console.log('这是p标签');
+	})*/
+</script>
+</html>

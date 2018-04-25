@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.select{
+			width: 200px;
+			margin: 100px auto;
+		}
+		.select ul{
+			overflow: hidden;
+			height: 0;
+			transition: height .5s;
+		}
+		.select h2,.select li{
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			color:#999;
+			font-size: 18px;
+			box-sizing: border-box;
+			font-weight: normal;
+			border:1px solid #999;
+		}
+		.select li.hover{
+			background: skyblue;
+			color:#fff;
+		}
+		#box{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<select name="" id="">
+		<option value="">请选择姓名</option>
+		<option value="">李硕</option>
+		<option value="">武泽峰</option>
+		<option value="">夏艳威</option>
+		<option value="">杨凯旋</option>
+	</select>
+	<div class="select">
+		<h2>请选择姓名</h2>
+		<ul>
+			<li>李硕</li>
+			<li>武泽峰</li>
+			<li>夏艳威</li>
+			<li>杨凯旋</li>
+		</ul>
+	</div>
+	<div id="box" style="padding: 0 40px;border:3px solid red;margin-left: 10px;"></div>
+</body>
+<script>
+	var arr = ['李硕','武泽峰','夏艳威','杨凯旋'];
+	var select = document.querySelector('.select'),
+		h2 = select.querySelector('h2'),
+		ul = select.querySelector('ul');
+		ulLi = ul.querySelectorAll('li');
+	//计算ul的高度
+		//取第一个li的高度
+	var firstLi = ulLi[0].offsetHeight,
+		len = ulLi.length,
+		h = firstLi * len;
+
+	h2.addEventListener('click',function(e){
+		var e = e || window.event;
+		if(e.stopPropagation){
+			e.stopPropagation()
+		}else{
+			e.cancelBubble = true;
+		}
+		ul.style.height = h +'px';
+	},false)
+
+	ul.onmouseover = function(e){
+		var ev = e || window.event;
+		var tar = ev.target || ev.srcElement;
+		if(tar.nodeName === 'LI'){
+			for(var i=0,len=ulLi.length;i<len;i++){
+				ulLi[i].classList.remove('hover');
+			}
+			tar.classList.add('hover');
+		}
+	}
+	ul.onclick = function(e){
+		var ev = e || window.event;
+		var tar = ev.target || ev.srcElement;
+		if(tar.tagName === 'LI'){
+			h2.innerHTML = tar.innerHTML;
+			ul.style.height = '0px';
+		}
+	}
+	document.onclick = function() {
+		console.log('document');
+		ul.style.height = '0px';
+	}
+</script>
+</html>

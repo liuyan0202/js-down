@@ -1,0 +1,22 @@
+string.trim();
+	功能：去掉当前字符串前导和后导空格
+	返回值：string
+
+
+
+
+
+添加医院
+	1.添加
+		1.文本框添加
+		2.按钮添加
+			addSpan(input.value / span.innerHTML)
+				textarr = [];
+				textarr.length < 5
+	2.删除
+		<p><span></span><em></em></p>
+		点击em删除
+			em 前一个节点的内容 查找 span标签内容进行对比如果相同把span类名删除
+			把数组对应值清空
+			
+

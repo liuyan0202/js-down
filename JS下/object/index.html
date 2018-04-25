@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div p,div h1,div h2{
+			width: 10px;height: 10px;
+			margin: 2px;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<script>
+		
+
+		function Css(str,tagname){
+			this.tar = document.querySelector(str);
+			this.tagname = tagname;
+			this.setStyle();
+			//用来添加标签
+			this.eventAdd();
+		}
+		Css.prototype.eventAdd = function(){
+			var that = this;
+			///var tagN = this.tagname;
+			//构造函数的原型方法
+			//this指向构造函数实例对象 new Css
+			this.tar.onclick = function(){
+				//创建标签
+				//this 指向点击的div
+				var tag = document.createElement(that.tagname);
+				this.appendChild(tag);
+			}
+			console.log(this);
+		}
+		Css.prototype.setStyle = function(){
+			this.tar.style.cssText = 'width:100px;height:100px;background:red';
+		}
+		var obj = new Css('.box','p');
+		var obj1 = new Css('.box1','h1');
+		var obj2 = new Css('.box2','h2');
+		//console.log(obj,obj1,obj2);
+
+		/*obj.setStyle();
+		obj1.setStyle();
+		obj2.setStyle();*/
+
+
+	</script>
+</body>
+</html>

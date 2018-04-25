@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		img{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	document.addEventListener('click',function(e){
+		var ev = e || window.event;
+		var x = ev.clientX,
+			y = ev.clientY;
+		var img = new Image();
+			img.src = 'star.png';
+		img.style.left = x +'px';
+		img.style.top = y+'px';
+		document.body.appendChild(img);
+	},false)
+
+</script>
+</html>

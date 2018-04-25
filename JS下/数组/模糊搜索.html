@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="search">
+		<input type="text" id="text">
+		<button>搜索</button>
+	</div>
+	<ul class="list">
+
+	</ul>
+</body>
+<script>
+	var data = [
+		"中国好声音",
+		"中国新歌声",
+		"中国银行",
+		"中国建设银行",
+		"中国农业银行",
+		"北京八维研修学院"
+	];
+
+	var inp = document.getElementById('text');
+	var ul = document.querySelector('.list');
+	function trim(str) {
+		var reg = /^\s+|\s+$/;
+		return str.replace(reg,"");
+	}
+	//监听文本框值发生变化
+	inp.addEventListener('input',function(){
+		//取文本框值
+		var val = trim(this.value);
+		if(val==""){
+			ul.innerHTML = "";
+		}else{
+			var valReg = new RegExp('^'+val);
+			//匹配符合条件的
+			var newdata = data.filter(function(v){
+				return valReg.test(v)
+			});
+			//展示数据
+			var str = "";
+			newdata.forEach(function(v,i){
+				str+='<li>'+v+'</li>'
+			});
+			ul.innerHTML = str;
+		}
+
+	},false)
+
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var  arr = ["北京","八维"];
+		fun = function fun(v,i){
+			console.log(v);
+			console.log(i);
+		}
+		function foreach(a,b){
+			for(var i=0;i<a.length;i++){
+				b(a[i],i)
+			}
+		}
+		foreach(arr,fun);
+	</script>
+</body>
+</html>

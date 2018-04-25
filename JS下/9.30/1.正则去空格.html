@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function emp(arrs){
+            return arrs.replace(/^\s+/,"");//去前导空格
+        }
+        function emp1(arrs){
+            return arrs.replace(/\s/g,"");//去所有空格
+        }
+        function emp2(arrs){
+            return arrs.replace(/^\s|\s$/g,"");//去所有空格
+        }
+        console.log(emp('    a b  ').length);
+        console.log(emp1('    a b  ').length);
+        console.log(emp2('    a b  ').length);
+
+
+    </script>
+
+</body>
+</html>

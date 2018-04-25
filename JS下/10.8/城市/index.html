@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .box{
+            width:600px;
+            height:600px;
+            border:4px solid #000;
+            margin:0 auto;
+
+        }
+        #lis{
+            width:120px;
+            height:100%;
+            overflow-y:scroll;
+            float: left;
+            overflow-x:hidden;
+        }
+        #lis li{
+            width:100%;
+            height:50px;
+            text-align:center;
+            line-height:50px;
+            border-bottom:1px solid #eee;
+        }
+        .right{
+            float: left;
+            width:480px;
+            height:100%;
+            padding-top:20px;
+        }
+        .right a{
+            display:inline-block;
+            padding:10px 20px;
+            color:#ccc;
+            font-size:16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="lis">
+        </ul>
+        <div class="right">
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        var lis=document.getElementById("lis"),
+            right=document.querySelector(".right");
+        var str='';
+        for(var key in hotel_hotData){
+            str+='<li>'+key+'</li>';
+        }
+        lis.innerHTML=str;
+        var reg=/[\u4e00-\u9fa5]+/g;
+        lis.onclick=function(e){
+            right.innerHTML="";
+            var ev=e||window.event;
+            var tar=ev.target||ev.srcElement;
+            if(tar.tagName==="LI"){
+                var tit=tar.innerHTML;
+                //console.log(tit);
+                var city=hotel_hotData[tit].match(reg);
+                //console.log(city);
+                for(var i=0;i<city.length;i++){
+                    var a=document.createElement("a");
+                    a.innerHTML=city[i];
+                    right.appendChild(a);
+                }
+
+            }
+        }
+        lis.children[0].click();
+
+    </script>
+
+</body>
+</html>

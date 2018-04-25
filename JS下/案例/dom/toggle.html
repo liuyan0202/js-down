@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		.box{
+			width:200px;
+			height: 200px;
+			background: red;
+			opacity: 1;
+			transition: opacity 1s;
+		}
+		.box.hide{
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<button>显示/隐藏</button>
+</body>
+<script>
+	var btn = document.getElementsByTagName('button')[0],
+		box = document.querySelector('.box');
+	btn.onclick = function() {
+		if(box.classList.contains('hide')){
+			box.classList.remove('hide')
+		}else{
+			box.classList.add('hide')
+		}
+	}
+</script>
+</html>

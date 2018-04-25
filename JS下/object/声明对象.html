@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var a = {
+			name:'zs',
+			age:13,
+			friend:['ls','ww','wzl']
+		}
+		
+		var a1 = new Object();
+		a1.name = 'ww';
+		a1['friend'] = ['zs','ls'];
+		a1.age = 15;
+		a1.say = function(){
+			alert(this.name);
+		}
+
+		var Fun = function(){
+			this.name = '1601A';
+			this.age = 10,
+			this.say = function(){
+				alert('该教室为'+this.name+'课程天数'+this.age);
+			}
+		}
+		//实例化构造函数
+		var obj = new Fun(); //对象
+		console.log(a instanceof Object);
+		console.log(a1 instanceof Object);
+		console.log(obj instanceof Object);
+		console.log(obj instanceof Fun)
+		
+		var arr1 = new Array(1,2,3);
+		console.log(arr1 instanceof Array);
+		console.log(arr1 instanceof Object);
+
+
+		var reg = new RegExp();
+		console.log(reg instanceof RegExp);
+		console.log(reg instanceof Object);
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name="ls";
+        function check(n,m,y){
+            console.log(m+"班有"+y+"人");
+           return alert(typeof n);
+        }
+        check.call(null,"123","1601A",57);
+
+        var arr=["早","上","好"];
+        arr.forEach(alert);//遍历数组
+        var str="下雨啦";
+        arr.forEach.call(str,alert);
+
+
+
+
+    </script>
+
+</body>
+</html>

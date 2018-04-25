@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin:0;
+				list-style: none;
+			}
+			.wrap{
+				margin:20px;
+			}
+			#text{
+				width:250px;
+				height:30px;
+			}
+			.btn{
+				padding: 5px 10px;
+				background: burlywood;
+				color:#fff;
+				border:none;
+			}
+			ul{
+				margin: 20px;
+			}
+			ul li{
+				display: inline;
+				padding: 5px;
+				margin: 5px;
+				border-radius: 10px;
+				border: 1px solid #ccc;
+			}
+			ul li:hover{
+				background: dodgerblue;
+				color:#fff;
+			}
+			.on{
+				background: dodgerblue;
+				color:#fff;
+			}
+			li{
+				display: inline;
+			}
+			b{
+				margin:0 10px;
+			}
+			p{
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<input type="text" name="text" id="text" value="" />
+			<button class="btn">添加</button>
+			<ul class="list"></ul>
+			<div class="add"></div>
+		</div>
+		  <script type="text/javascript">
+		     var text = document.querySelector('#text'),
+		           btn = document.querySelector('.btn'),
+		           list = document.querySelector('.list'),
+		           add = document.querySelector('.add');
+		    // var P = document.querySelectorAll('p');    
+		     var B = document.querySelectorAll('b');
+		  	 var arr = ['北京医院','同仁医院','309','上地医院','海淀医院','军医院','安贞医院'];
+		  	 for(var i=0,len=arr.length;i<len;i++){
+		  	 	var li = document.createElement('li');
+		  	 	li.innerHTML = arr[i];
+		  	 	list.appendChild(li);
+		  	 }
+		  	 list.onclick = function (ev){
+		  	 	var ev = ev || window.event;
+		  	 	var tar = ev.target || ev.srcElement;
+		  	 	if(tar.nodeName ==='LI'){
+		  	 		var p = document.createElement('p'),
+		  	 		      b = document.createElement('b'),
+		  	 		      span = document.createElement('span');
+		  	 		      span.innerHTML = tar.innerHTML;
+		  	 		      b.innerHTML = '删除';
+		  	 		      p.appendChild(span);
+		  	 		      p.appendChild(b);
+		  	 		      add.appendChild(p);
+		  	 		      tar.className = 'on';
+		  	 	}
+		  	 }
+		  	 btn.onclick = function (){
+			  	 	var val = text.value.trim();
+			  	 	if(val !=''){
+			  	 	  var p = document.createElement('p'),
+		  	 		      b = document.createElement('b'),
+		  	 		      span = document.createElement('span');
+		  	 		      span.innerHTML = text.value;
+		  	 		      b.innerHTML = '删除';
+		  	 		      p.appendChild(span);
+		  	 		      p.appendChild(b);
+		  	 		      add.appendChild(p);
+		  	 		      text.value =''; 	    
+			  	 	}else{
+			  	 		alert('请输入医院名')
+			  	 	}
+			  	
+		  	 }
+		  	 
+		  	 add.onclick = function(e){
+		  	 	var e = e || window.event;
+		  	 	var tar = e.target || e.srcElement;
+		  	 	if(tar.nodeName ==='B'){
+		  	 		var value = tar.previousElementSibling.innerHTML;
+		  	 		for(var j=0; j<list.children.length; j++){
+		  	 			if(list.children[j].innerHTML === value){
+		  	 				list.children[j].className ='';
+		  	 			}
+		  	 		}
+		  	 	    this.removeChild(tar.parentNode)
+		  	 	}
+		  	 }
+		  	 
+		  </script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap" style="width:500px;height:300px;border:1px solid red">
+        <p id="p" style="width:200px;height:100px;border:1px solid lime">
+            <input type="button" value="按钮" id="btn">
+        </p>
+    </div>
+    <script>
+        var btn=document.querySelector("#btn"),
+            p=btn.parentNode,
+            wrap=p.parentNode;
+        //冒泡 从下往上冒泡
+        /*btn.addEventListener("click",function(){
+            alert("btn");
+        },false);
+        p.addEventListener("click",function(){
+            alert("p");
+        },false);
+        wrap.addEventListener("click",function(){
+            alert("wrap");
+        },false);*/
+
+        //捕获 从上往下捕获
+        /*btn.addEventListener("click",function(){
+            alert("btn");
+        },true);
+        p.addEventListener("click",function(){
+            alert("p");
+        },true);
+        wrap.addEventListener("click",function(){
+            alert("wrap");
+        },true);*/
+
+
+        //IE事件处理程序
+        /*btn.attachEvent("onclick", function(){
+            alert("123");
+        })*/
+
+        //解决兼容问题
+        function addEvent(tar,type,fun){
+            if(tar.addEventListener){//如果是DOM2级则用dom.addEventListener
+                tar.addEventListener(type,fun,false);
+            }
+            else if(tar.attachEvent){//如果是IE则用dom.attchEvent
+                tar.attachEvent("on"+type,fun);
+            }
+            else{//如果是DOM 0级则用dom.onclick=function(){}
+                tar["on"+type]=fun;
+            }
+            }
+        }
+        addEvent(btn,"click",function(){
+            alert("这是一个按钮");
+        })
+
+
+    </script>
+</body>
+</html>

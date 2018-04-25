@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        img{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("click",function(e){
+            var ev=e||window.event,
+                img= new Image();//创建img 或者写成img=document.createElement("img")
+                img.src="star.png";
+            var X=ev.clientX,
+                Y=ev.clientY;
+            img.style.left=X+"px";
+            img.style.top=Y+"px";
+            document.body.appendChild(img);
+        },false);
+    </script>
+
+</body>
+
+</html>

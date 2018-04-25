@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telphone=no, email=no,address=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <header>用户注册</header>
+        <section>
+            <div class="left1">
+                <div class="box1">
+                    <p>
+                        <b>邮箱</b>
+                        <span>邮箱就是账号</span>
+                    </p>
+                    <label><input type="text" id="mail">
+                      <small id="war">邮箱格式不正确</small>
+                  </label>
+                </div>
+                <div class="box1">
+                    <p>
+                        <b>用户名</b>
+                        <span>只能有数字，文字，下划线组成</span>
+                        <i>最多32个字符</i>
+                    </p>
+                    <label><input type="text" id="user"></label>
+                </div>
+                <div class="box1">
+                    <p>
+                        <b>密码</b>
+                        <span>6至16个字符</span>
+                    </p>
+                    <label><input type="password" id="psw">
+                  <small class="text" id="warn">必须等于或多于6个字符</small>
+                  </label>
+                </div>
+                <div class="box1">
+                    <p>
+                        <b>确认密码</b>
+                        <span>再次确认输入密码</span>
+                    </p>
+                    <label><input type="password" id="topsw"></label>
+                </div>
+            </div>
+            <div class="right">
+                <button type="">完成注册</button>
+                <form>
+                    <input type="checkbox"><span>同意《<a href="">用户使用协议</a>》</span>
+
+                </form>
+                <p>已经拥有账号，<a href="">请直接登录</a></p>
+                <p>忘记密码，<a href="">请联系管理员</a></p>
+            </div>
+        </section>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

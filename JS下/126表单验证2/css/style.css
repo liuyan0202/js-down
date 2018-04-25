@@ -1,0 +1,222 @@
+*{
+    padding:0;
+    margin:0;
+}
+li{
+    list-style:none;
+}
+.wrap{
+    width:1200px;
+    height:auto;
+    margin:0 auto;
+}
+.top{
+    height:100px;
+}
+.left{
+    width: 510px;
+    height:100px;
+    float:left;
+}
+.left ul li{
+    float:left;
+    margin:10px;
+}
+.right{
+    float:left;
+    width:690px;
+}
+.right h2{
+    color:#61615f;
+    font-weight:normal;
+    float:left;
+    border-left:1px solid #ccc;
+    margin-top:17px;
+    font-size：15px;
+    padding-left:5px;
+}
+.right ol{
+    float:right;
+}
+.right ol li{
+    float:left;
+    padding: 0 5px;
+    margin-top:28px;
+    color:#072fb3;
+    font-size:10px;
+    cursor: pointer;
+}
+.right ol li:nth-child(2){
+    border-left:1px solid #ccc;
+}
+.bottom{
+    width: 1200px;
+    border:1px solid #ccc;
+    border-radius:5px 5px 0 0;
+}
+.tit{
+    height:45px;
+    width: 1185px;
+    border-radius:5px 5px 0 0;
+    background: url(../images/bg_03.png);
+    color:#fff;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 45px;
+    padding-left:15px;
+}
+.content{
+    height:880px;
+}
+.conleft{
+    width:800px;
+    height:880px;
+    float:left;
+}
+.conleft ol{
+    margin: 60px auto;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    background:url(../images/baibg_03.png); 
+    width:512px;
+    height:40px;
+}
+.conleft ol li{
+    float: left;
+    width: 170px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+}
+.conleft ol li:nth-child(2){
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+}
+.conleft ol li:hover,.conleft ol li:nth-child(1)
+{
+    background: url(../images/lanbg_03.png);
+    color: #fff;
+}
+.conleft ul{
+    width: 550px;
+    margin: 10px auto;
+}	
+.conleft ul li{
+    margin-bottom:20px;
+}
+.conleft ul li:nth-of-type(2) i input,.conleft ul li:nth-of-type(3) i input,.conleft ul li:nth-of-type(4) i input,.conleft ul li:nth-of-type(6) i input{
+    width: 410px;
+
+}
+.conleft ul li:nth-of-type(4) i input{
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left:20px;
+}
+.conleft button{
+    width:170px;
+    height:38px;
+    background: url(../images/baibg_03.png);
+    font-weight: bold;
+    color: #5b5d4f;
+    border:1px solid #ccc;
+    font-size: 16px;
+    margin-left:93px;
+    margin-top:10px;
+    border-radius: 5px;
+}
+.conleft ul li:nth-of-type(6) i input{
+    margin-left:8px;
+}
+.conleft h2{
+    width: 380px;
+    height: 40px;
+    line-height: 40px;
+    padding-left:10px;
+    background: #ffffe1;
+    border:1px solid #ddd;
+    font-size: 12px;
+    position: relative;
+    top:-28px;
+    left: 100px;
+    color: red;
+    display: none;
+}
+.conleft ul li:nth-of-type(6) button{
+    background: #49a631;
+    color: #fff;
+    border-radius: 0;
+}
+.conleft ul li span{
+    color: #666;
+}
+.conleft p{
+    margin-left:100px;
+}
+.conleft a{
+    margin-left: 100px;
+    color: #999;
+    display: block;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.conleft ul li i input{
+    width: 256px;
+    height:34px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin-left:20px;
+}
+.conleft ul li em{
+    font-style: normal;
+    margin: 0 5px;
+    font-size: 20px;
+    color: #000;
+}
+.conleft ul li select{
+    width: 123px;
+    height: 34px;
+    border: 1px solid #999;
+    font-size: 16px;
+    font-weight: bold;
+}
+.conleft ul li b{
+    color: #cf0000;
+    margin-right:5px;
+}
+.conleft ul li p{
+    color: #999;
+    font-size: 10px;
+    margin-top: 7px;
+}
+.conright{
+    float:left;
+    width:398px;
+    height:880px;
+    background: #f5f5f5;
+    border-left:1px solid #ccc;
+}
+.conright h1{
+    font-weight: normal;
+    color: #2270bb;
+    font-size: 27px;
+    text-align: center;
+    margin-top:128px;
+}
+.conright p{
+    color: #2270bb;
+    text-align: center
+}
+.conright img{
+    display: block;
+    margin: 30px auto;
+}
+.conright form{
+  text-align: center;
+  color: #999;
+  line-height: 30px;
+}

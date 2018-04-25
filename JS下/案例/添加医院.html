@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+        <style type="text/css">
+            *{
+                margin:0;
+                padding:0;
+                list-style:none;
+            }
+            .box{
+                width: 500px;
+                height: 500px;
+
+            }
+            .box li{
+
+               height: 25px;
+               line-height:25px;
+               clear:both;
+
+            }
+            .Tit{
+                background:red;
+            }
+            .Tit li{
+                float: left;
+                margin-left:5px;
+                cursor: pointer;
+                margin-top:10px;
+                border:1px solid skyblue;
+                margin-left:5px;
+            }
+
+        </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>添加医院</h1>
+    <input type="text" name="" id="txt">
+    <input type="button" name="" id="btn" value="添加医院">
+
+    <script type="text/javascript">
+        var arr=["中和医院","三医院","大医院","校医院"];
+        var oTxt=document.getElementById("txt");
+        var oBtn=document.getElementById("btn");
+        var oTit=document.createElement("ol")
+        oTit.className="Tit"
+        var flag=true;
+        document.body.appendChild(oTit)
+        for(var i=0;i<arr.length;i++){
+            var aLis=document.createElement("li");
+            aLis.innerHTML=arr[i];
+            oTit.appendChild(aLis)
+
+        }
+        var oBox=document.createElement("ul");
+        oBox.className="box";
+        document.body.appendChild(oBox);
+         oBtn.onclick=function(){
+            if(flag){
+                count++;
+                var aLi=document.createElement("li")
+                aLi.innerHTML=oTxt.value;
+                oBox.insertBefore(aLi,oBox.children[0]);
+                if(count>4){
+                        flag=false;
+                    }
+            }
+
+        }
+        var count=0;
+        for(var j=0;j<arr.length;j++){
+            (function(n){
+                    oTit.children[n].onclick=function(){
+                        if(flag){
+                        count++;
+                        console.log(count);
+                        var aLi=document.createElement("li")
+                        for(var k=0;k<arr.length;k++){
+                            oTit.children[k].style.background=""
+                        }
+                        oTit.children[n].style.background="skyblue"
+                        var aEm=document.createElement("em")
+                        aLi.innerHTML=oTit.children[n].innerHTML;
+                        aEm.innerHTML="<i>删除</i>"
+                        oBox.insertBefore(aLi,oBox.children[0]);
+                        aLi.appendChild(aEm)
+                        aEm.onclick=function(){
+                        oBox.removeChild(this.parentNode)
+                            }
+                            if(count>4){
+                                flag=false;
+                            }
+                        }
+
+                    }
+            })(j)
+        }
+
+
+
+    </script>
+</body>
+</html>

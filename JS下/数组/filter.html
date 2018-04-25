@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = ['a001','a002','b001','b002','a003'];
+
+		var reg = /^a/;
+
+		/*var newArr = [];
+		for(var i=0;i<arr.length;i++){
+			if(reg.test(arr[i])){
+				newArr.push(arr[i]);
+			}
+		}
+		console.log(newArr);
+
+
+		var newArr1 = arr.filter(function(v,i,arr){
+			return !reg.test(v);
+		});
+		console.log(newArr1);*/
+
+		function filter(arr,fun){
+			var newarr = [];
+			for(var i=0;i<arr.length;i++){
+				var check = fun(arr[i]);
+				if(check){
+					newarr.push(arr[i]);
+				}
+			}
+			return newarr;
+		}
+		var newA = filter(arr,function(v){
+			return !reg.test(v);
+		});
+		console.log(newA);
+
+	</script>
+</body>
+</html>

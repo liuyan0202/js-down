@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2 style="width: 100%;height: 50px;line-height: 50px;font-size: 40px;">欢迎</h2>
+</body>
+<script>
+/*file:///C:/Users/Administrator/Desktop/126%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%812/%E9%A6%96%E9%A1%B5.html?email=a123445@126.com&phone=13412341234*/
+/*
+	{
+		email :a123445@126.com,
+		phone:13412341234
+	}
+
+*/
+	var str = "http://www.baidu.com?user=abc&pwd=123";
+
+	function getAttr(url,name){
+		var reg = /[\?&](\w+)=([^\?&]+)/g;
+		var str = "";
+		//调用方法时把函数当前做参数传递的为回调函数
+		url.replace(reg,function($0,$1,$2){
+			if($1 === name){
+				str = $2
+			}
+		})
+		return str;
+	}
+
+	console.log(getAttr(str,'user'));
+
+	var aa =  "@80|北京@321|上海@80|广州@91|深圳@324|成都@383|杭州@192|武汉@317|西安@394|重庆@292|青岛@199|长沙@224|南京@61|厦门@373|昆明@248|大连@343|天津@163|郑州@133|三亚@287|济南@54|福州";
+	var reg = /[\u4e00-\u9fa5]+/g;
+	console.log(aa.match(reg));
+	console.log(reg.exec(aa));
+</script>
+</html>

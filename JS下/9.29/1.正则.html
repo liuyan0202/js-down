@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    用户名<input type="text" id="text"/>
+    <button id="btn">注册</button>
+    <script>
+        /*var str="abcdeda";
+        var str1="abcABC";
+        //var reg=RegExp("a","g");
+        var arr=/abc/gi;
+        console.log(str1.replace(arr,"123"));
+        */
+
+       /*var str="1a2b3c4d-9+0";
+       var reg=/1|2|3|4/g;
+       console.log(str.replace(reg,"*"));
+       var reg1=/\d/g;
+       console.log(str.replace(reg1,"*"));*/
+       var text=document.getElementById("text"),
+           btn=document.getElementById("btn");
+        btn.onclick=function(){
+            if(text.value==""){
+                alert("请输入用户名");
+            }
+            else{
+                var reg=/^\w+$/.test(text.value);
+                if(reg==false){
+                    alert("用户名以字母数字下划线命名");
+                }else{
+                    document.location.href="http//:www.baidu.com";
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>

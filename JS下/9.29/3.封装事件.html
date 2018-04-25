@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .box{
+            width:500px;
+            height:200px;
+            background:lime;
+        }
+        .boxs{
+            border-radius:50%;
+        }
+        ul{
+            display:flex;
+            justify-content:space-around;
+            padding-top:70px;
+        }
+        ul li{
+            width:50px;
+            height:50px;
+            background:orange;
+        }
+        ul li:nth-of-type(odd){
+            background:skyblue;
+        }
+        ul li.tex{
+            background:pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li class="tex"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+    <script>
+        var str=document.querySelectorAll("*");
+        var strs=[];
+        for(var i=0;i<str.length;i++){
+            strs.push(str[i]);
+
+        }console.log(strs);
+        function getClass(arrs,name){
+        var arr = [];
+        if(strs.indexOf(name) != -1){
+            arr.push()
+        }
+        return arr;
+    }
+        getClass(strs,"box");
+    </script>
+</body>
+</html>

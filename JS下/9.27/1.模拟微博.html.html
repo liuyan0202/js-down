@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrap{
+            width:500px;
+            height:800px;
+            margin:20px 0 10px 40px;
+        }
+        b{
+            color:skyblue;
+            font-size:18px;
+            font-family:"幼圆";
+
+        }
+        p{
+            height:30px;
+            line-height:30px;
+        }
+        #box{
+            width:500px;
+            height:60px;
+            border:1px solid #ccc;
+            outline:none;
+            color:red;
+
+        }
+        #btn{
+            float:right;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <b>有什么新鲜事想告诉大家？</b>
+        <p></p>
+        <textarea id="box" style="width:500px;border:1px solid #ccc"></textarea>
+        <input type="button" value="广播" id="btn">
+    </div>
+    <script>
+        var box=document.getElementById("box"),
+            btn=document.getElementById("btn"),
+            span=document.getElementById("spn"),
+            p=document.querySelector("p");
+
+        var i=140;
+        p.innerHTML="您还可以输入"+i+"字";
+        box.onkeyup=function(){
+            i--;
+            p.innerHTML="您还可以输入"+i+"字";
+            var str=this.value;
+
+            if(this.value==""){
+                p.innerHTML="您还可以输入140字";
+            }
+            if(i<=0){
+                p.innerHTML="您还可以输入0字";
+                    alert("内容长度已达到限制，禁止继续输入");
+
+            }
+            if(i<115){
+                this.style.color="#000";
+            }
+
+        }
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

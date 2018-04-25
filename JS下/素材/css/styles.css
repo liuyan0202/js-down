@@ -1,0 +1,43 @@
+@import url('reset.css');
+body{
+	color:#000;
+	font-size:12px;
+	background:#f7f7f7 url(../images/pinstripe.gif);
+	font-family:Georgia, "Times New Roman",sans-serif;
+}
+
+a{
+	color:#000;
+	text-decoration:none;
+}
+
+a img{
+	border:none;
+}
+
+header h1{
+	margin:10px 0 0 20px;
+	font-size:100px;
+	text-transform:uppercase;
+	text-shadow:0px 0px 1px #fff;
+	color:#444;
+	font-family: 'Wire One', arial, serif; 
+}
+header span{
+	font-style:italic;
+	margin:-10px 0 10px 188px;
+	display:block;
+	color:#555;
+	text-shadow:1px 1px 1px #fff;
+}
+
+.iw_wrapper{
+	width:70%;
+	margin:30px auto 100px auto;
+	position:relative;
+}
+
+.iw_wrapper li{
+	float:left;
+	margin:5px;
+}

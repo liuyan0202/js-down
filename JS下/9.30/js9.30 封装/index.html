@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div class='main box'></div>
+    <div class='box box2 main'></div>
+    <script>
+        // 封装个人函数用正则的方法获取所有带有box类名的元素
+        function getClass(cla){
+            var all=document.getElementsByTagName("*");
+            var reg=RegExp('\\b'+cla+'\\b');
+            var arr=[];
+            for(var i=0;i<all.length;i++){
+                if(reg.test(all[i].className)){
+                    arr.push(all[i]);
+                }
+            }
+            return arr;
+        }
+        console.log(getClass('box'));
+
+        //封装一个函数用正则的方法去掉前后空格
+        var str=" welcome ";
+        function fInd(strs){
+            var reg=RegExp('\\s',"g");
+            if(reg.test(strs)){
+                return strs.replace(" ","");
+            }
+
+        }console.log(fInd(str));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+*{margin:0;
+  padding:0;
+  list-style:none;}
+
+.pics{width:750px;
+      height:100px;
+      margin:350px 0 0 200px;}
+
+.pics li{float:left;
+         margin-right:15px;
+         padding:3px;
+         background:#ccc;
+         cursor:pointer;}
+
+#message{position:absolute;
+         width:260px;
+         padding:10px;
+         background:#eee;
+         border:1px solid #F90;
+         font-size:12px;
+         line-height:1.5;
+         text-indent:24px;
+         border-radius:5px;
+         color:#333;
+         font-weight:bold;
+         display:none;}
+#message.right{
+  margin-left: -310px;
+}
+#message span{display:block;
+              position:absolute;
+              width:0;
+              height:0;
+              overflow:hidden;
+              border:6px solid transparent;
+              border-right-color:#F90;
+              left:-13px;
+              bottom:16px;}
+
+#message span.right {border-right-color:transparent;
+                    border-left-color:#F90;
+                    left:280px;}

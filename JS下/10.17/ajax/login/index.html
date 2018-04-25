@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	姓名:<input type="text" id="text"><br/>
+	密码:<input type="text" id="pwd"><br/>
+	<button>登录</button>
+	<script src="js/ajax.js"></script>
+	<script>
+		
+		var btn = document.getElementsByTagName('button')[0];
+
+		btn.onclick = function(){
+			var text = document.getElementById('text').value.trim();
+			var pwd = document.getElementById('pwd').value.trim();
+			//请求服务器  发送姓名user和密码pwd  接受服务器返回值
+			$.ajax({
+				url:'login.php',
+				method:'post',
+				async:false,
+				data:{
+					user:text,
+					pwd:pwd
+				},
+				//成功请求之后要执行的函数
+				success:function(d){
+					// d成功请求接受的返回值
+					var data = JSON.parse(d);
+					if(data.code === 1){
+						window.location.href = 'http://www.baidu.com';
+					}else{
+						alert('姓名或密码输入错误，请重新输入');
+					}
+				}
+			})
+		}
+		
+	</script>
+</body>
+</html>

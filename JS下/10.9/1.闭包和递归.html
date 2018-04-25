@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+            <li>004</li>
+        </ul>
+    <script>
+        var ul=document.querySelector("ul"),
+            lis=ul.children;
+            for(var i=0;i<lis.length;i++){   // 闭包 li被点击的时候，弹出下标
+                (function(a){
+                    lis[a].onclick=function(){
+                        alert(a);
+                    }
+                })(i);
+
+                lis[i].onclick=function(){
+
+                }
+
+            }
+
+
+            /*function sum(n){
+                if(n==1){
+                    return 1;  //递归  求1至10的和
+                }
+                return n+sum(n-1);
+            }
+            console.log(sum(10));*/
+
+
+        /*function fun(){
+            var num=5;
+            return function(){
+                num++;
+                console.log(num);
+            }
+        }
+        fun()();
+        fun()();
+        fun()();
+
+        var a=fun();
+        a();
+        a();
+        a();*/
+
+
+
+    </script>
+</body>
+</html>

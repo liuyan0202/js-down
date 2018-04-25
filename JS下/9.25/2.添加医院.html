@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        #text{
+            margin:20px 0 0 50px;
+        }
+        ul{
+            margin:10px 50px 50px;
+        }
+        ul>li{
+            float:left;
+            margin-right:10px;
+            cursor:pointer;
+            padding:2px 5px;
+            border-radius:10px;
+        }
+        ol{
+            width:300px;
+            height:300px;
+            border:1px solid #ccc;
+            margin-left:50px;
+        }
+        ul>li.active{
+            background:rgba(0,0,255,.3);
+        }
+        ul li.on{
+           background:rgba(0,0,255,.4);
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <input type="text" id="text">
+    <input type="button" value="添加医院" id="btn">
+    <ul>
+        <li>北京医院</li>
+        <li>309医院</li>
+        <li>同仁医院</li>
+    </ul>
+    <ol>
+
+    </ol>
+    <script>
+        var text=document.getElementById("text"),
+            btn=document.getElementById("btn"),
+            oUl=document.getElementsByTagName("ul")[0],
+            oLi=oUl.getElementsByTagName("li"),
+            oList=document.getElementsByTagName("ol")[0];
+            aLi=oList.children;
+            var num=0;
+            var textArr=[];
+            btn.onclick=function(){
+
+                var val=text.value.trim();
+                if(val !=""){
+                    addLi(val);
+                }
+            }
+            for(var i=0;i<oLi.length;i++){
+                oLi[i].onclick=function(){
+                    if(this.classList.contains("on")){
+                        return false;
+                    }
+                    if(textArr.length==5){
+
+                        alert("该医院已经被添加或超过5个");
+                        return false;
+                    }
+                    this.classList.add("on");
+                    addLi(this.innerHTML);
+                }
+            }
+
+
+            function addLi(val){
+                if(textArr.indexOf(val)==-1 && textArr.length<5){
+                        textArr.push(val);
+                        var str="<li><span>"+val+"</span><button>删除</button></li>";
+                        oList.innerHTML=str+oList.innerHTML;
+                        var button=oList.querySelectorAll("button");
+                        for(var k=0;k<button.length;k++){
+                            button[k].onclick=function(){
+                                oList.removeChild(this.parentNode);
+                                var txt=this.previousElementSibling.innerHTML;
+                                textArr.splice(textArr.indexOf(txt),1);
+                                for(var j=0;j<oLi.length;j++){
+                                    if(oLi[j].innerHTML===txt){
+                                        oLi[j].classList.remove("on");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        alert("该医院已经被添加或超过5个");
+                    }
+            }
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

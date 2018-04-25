@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = [1,3,4,5];
+
+		arr.forEach(function(value,index,arr){
+			console.log(value);
+		})
+
+		function forEach(array,fun){
+	
+			for(var i=0;i<array.length;i++){
+				fun(array[i],i,array)
+			}
+		}
+		forEach(arr,function(value,index,arr){
+			console.log(value,index,arr)
+		})
+
+
+		/*var fun = function(a,b,c){
+
+		}
+
+		fun('1511A','1512A','1601A');*/
+	</script>
+</body>
+</html>

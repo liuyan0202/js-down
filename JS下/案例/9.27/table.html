@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		th,td{
+			padding: 5px 20px;
+		}
+	</style>
+</head>
+<body>
+<table border="1" >
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+		</tr>
+	</thead>
+	<tbody style="background: red;">
+		<!-- <tr></tr> -->
+	</tbody>
+</table>
+<div class="box"></div>
+<input type="text" id="text">
+</body>
+<script>
+	var age = ["18","19","20","21"],
+		nameArr = ["李硕","武泽峰","杨凯旋","秦昊"];
+	var table = document.getElementsByTagName('table')[0],
+		tbody = table.tBodies[0];
+	tbody.onclick = function(e){  
+		var e = e || window.event;
+		var tar = e.target || e.srcElement;
+		//判断点击的是否为td
+		if(tar.nodeName === 'TD'){
+			alert(tar.innerHTML);
+		}
+		
+	}
+	//创建行
+	for(var i=0;i<age.length;i++){
+		var tr = document.createElement('tr'),
+			td = document.createElement('td'),
+			td1 = document.createElement('td');
+		td.innerHTML = nameArr[i];
+		td1.innerHTML = age[i];
+		tr.appendChild(td);
+		tr.appendChild(td1);
+		tbody.appendChild(tr);
+	}
+	
+	
+
+	// var a = 10;
+	// setTimeout(function(){
+	// 	a = 20;
+	// 	console.log(a);
+	// },0)
+	// console.log(a)
+</script>
+</html>

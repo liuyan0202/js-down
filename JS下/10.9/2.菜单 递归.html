@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var data=[
+            "递归.html",
+            "闭包.html",
+            "菜单.html",
+            {
+                tit:"10.8技能题",
+                src:[
+                    {
+                        tit:"城市",
+                        src:[
+                            "data.js",
+                            "index.html"
+                        ]
+                    },
+                    {
+                        tit:"126表单验证",
+                        src:[
+                            {
+                                tit:"css",
+                                src:[
+                                    "style.css"
+                                ]
+                            },
+                            {
+                                tit:"img",
+                                src:[
+                                    "1.png",
+                                    "2.png"
+                                ]
+                            }
+                            ,"126表单验证.html"
+                        ]
+                    }
+                ]
+            }
+        ]
+
+    function menu(data){
+        var str="<ul>";
+        for(var i=0;i<data.length;i++){
+            if(typeof data[i]==="object"){
+                str+="<li>"+data[i].tit+menu(data[i].src)+"</li>";
+            }
+            else{
+                str+="<li>"+data[i]+"</li>";
+            }
+
+        }
+        str+="</ul>";
+        return str;
+    }
+    var str=menu(data);
+    document.body.innerHTML=str;
+
+
+    </script>
+
+</body>
+</html>

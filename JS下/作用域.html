@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        //1
+        function box(obj) {
+            var obj;
+            obj.name = 'Lee';
+            obj = new Object();
+            obj.name = 'kkk';
+        }
+
+        var obj = new Object();
+        obj.name = 'test';
+
+        box(obj);
+        console.log(obj.name)
+
+
+        //2
+        var tt = 'aa';
+
+        function test() {
+            alert(tt);
+            var tt = 'dd';
+            alert(tt);
+        }
+        test();
+
+
+
+
+        //在定义它们的作用域里运行，而不是在执行它们的作用域里运行
+        //3
+        var init = 10;
+
+        function test1() {
+            alert(init);
+        };
+
+        function test2() {
+            var init = 20;
+            test1();
+        }
+        test2();
+
+
+
+        //4
+        function aaa() {
+            b = 10;
+            var a = b;
+            // var a = b = 10;
+        }
+        //aaa();
+        alert(a);
+        alert(b);
+
+
+
+
+        //5
+        var a1 = 10;
+
+        function test3(a1) {
+            alert(a1);
+            var a1 = 20;
+        }
+        test3(a1);
+
+
+
+
+        //6
+        var a = [1, 2, 3];
+        var b = a;
+        b = [1, 2, 3, 4];
+        alert(a);
+
+
+
+        //7
+        var arr = ['a', 'b', 'c'];
+        for (var i = 0, j; j = arr[i++];) {
+            console.log(j); // a b c
+        }
+        console.log(i + '-------'); // 
+        console.log(j);
+
+
+
+
+        //8
+        function one() {
+            console.log(a);
+            console.log(b);
+            var b = function() {
+                return 1
+            };
+            console.log(a);
+            console.log(b);
+
+            function a() {
+                return 2;
+            }
+        }
+        one();
+
+
+        //9
+        function sidEffecting(ary) {
+            ary = ary; //[0:1,1:1,2:10]
+            ary[0] = ary[2]; //[0:10,1:1,2:10]
+        }
+
+        function bar(a, b, c) {
+            console.log(a + ',' + b + ',' + c) //a=1 b=1 c=1
+            c = 10; // a=1 b=1 c=10
+            sidEffecting(arguments); //[0:1,1:1,2:10]
+            return a + b + c; //a=10 b=1 c=10
+        }
+        bar(1, 1, 1)
+
+
+
+
+        //10
+        var a = {},
+            b = Object.prototype;
+        alert(a.prototype === b);
+
+
+        //11
+        var foo = "Hello";
+        (function() {
+            var bar = " World";
+            alert(foo + bar);
+        })();
+        alert(foo + bar);
+
+
+        //12
+        console.log('one');
+        setTimeout(function() {
+            console.log('two');
+        }, 0);
+        console.log('three');
+
+
+        //13
+        var x = 10;
+        console.log(sub());
+
+        function sub() {
+            x--;
+            return x;
+        }
+
+
+        //14
+        function say667() {
+            // Local variable that ends up within closure
+            var num = 666;
+            var sayAlert = function() {
+                alert(num);
+            }
+            num++;
+            return sayAlert;
+        }
+
+        var sayAlert = say667();
+        sayAlert()
+        sayAlert()
+
+
+        //15
+        //window.add()
+        function add(a, b) {
+            alert(a + b);
+        }
+        //window.sub();
+        function sub(a, b) {
+            alert(a - b);
+        }
+
+        add.call(sub, 3, 1);
+
+
+        var x = 10,
+            obj = {
+                x: 20,
+                getX: function(x) {
+                    //var x=30
+                    console.log(this.x)
+                }
+            };
+
+        obj.getX.call(null, 30);
+
+
+        function valAt(arr, val) {
+            for (var i = 0, len = arr.length; i < len; i++) {
+                if (arr[i] == val) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        console.log(valAt([1, 5, 9, 6, 3], 6));
+
+        /*var fn=function(){
+        	alert('123')
+        }
+
+        btn.onclick=(function(){
+        	fn();
+        })()*/
+
+
+        var a = {
+            name: '24'
+        }
+
+        Object.hasOwnProperty('toString')
+    </script>
+</body>
+
+</html>

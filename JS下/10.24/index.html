@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="text"></textarea>
+    <p>还可以输入140字</p>
+</body>
+    <script>
+        var text=document.getElementById("text");
+        var p=document.querySelector("p");
+        text.oninput=function(){
+            var len=this.value.length;
+            var reg=/[\u4e00-\u9fa5]/g;
+            //取汉字
+            var hz=this.value.match(reg);
+            if(hz){
+                var hzlen=hz.length;
+            }
+            var lens=140-len+hzlen;
+            if(lens){
+                p.innerHTML="还可以输入"+lens+"字";
+            }
+            console.log(p);
+            //p.innerHTML="还可以输入"+140-(len+hzlen)+"个数";
+            //console.log(p);
+
+        }
+    </script>
+</html>

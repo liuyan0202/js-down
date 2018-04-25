@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="box">
+                <div class="hz"><img src="img/houzi_03.png" alt=""></div>
+                <div class="tv"><img src="img/tv_03.png" alt="">
+                <div class="text">中奖姓名</div>
+                <div class="btn">
+                    <img src="img/btn_03.png">
+                </div>
+                </div>
+                <div class="tai"><img src="img/tai_03.png" alt=""></div>
+                <div class="zl"><img src="img/chuanglian_01.png" alt=""></div>
+                <div class="yl"><img src="img/chuanglian_03.png" alt=""></div>
+            </div>
+		</div>
+		<div id="drawnBox">
+			<p></p>
+            <h2></h2>
+        </div>
+		<script>
+			var luckDraw = function(str,opts){
+				this.timer = null;
+				this.names=opts;
+				//中奖姓名
+				this.text=document.querySelector(".text");
+				//点击按钮
+                this.btn=document.querySelector(str);
+                //弹出中奖姓名
+                this.h2=document.querySelector("h2");
+                //放弹出图片的盒子
+                this.p=document.querySelector("p");
+                //弹出的盒子
+                this.drawnBox=document.querySelector("#drawnBox");
+				this.addEvent();
+			}
+			luckDraw.prototype={
+				constructor:luckDraw,
+				addEvent:function(){
+					var that=this;
+					var flag=false;
+					this.btn.onclick=function(){
+						//点击按钮时要切换的图片
+						var img=this.children[0];
+						if(flag){
+							img.src="img/btn_03.png";
+							that.stop();
+							flag=false;
+						}
+						else{
+							img.src="img/btn_05.png";
+							that.play();
+							flag=true;
+						}
+					}
+				},
+				ranDom:function(min,max){//随机数
+					return Math.floor(Math.random()*(max-min+1)+min);
+				},
+				render:function(){//随机获取姓名
+					var ind=this.ranDom(0,this.names.userArray.length-1);
+					this.text.setAttribute("ind",ind);
+					return this.names.userArray[ind].name;
+				},
+				play:function(){//每100毫秒执行抽奖
+					var that=this;
+					timer=setInterval(function(){
+						that.text.innerHTML=that.render();
+					},100)
+				},
+				stop:function(){//停止定时器
+					clearInterval(timer);
+					this.drawn();
+				},
+				drawn:function(){
+					var that = this;
+					var img=this.p.children;
+					var ind = this.text.getAttribute('ind');
+					this.drawnBox.style.display = 'block';
+					this.h2.innerHTML = '恭喜'+this.names.userArray[ind].name+'中奖啦!';
+					img.src=this.names.userArray[ind].avatar;
+					this.p.innerHTML=img.src;
+					setTimeout(function(){
+						that.drawnBox.style.display = 'none';
+						that.text.innerHTML = '抽奖姓名';
+					},1000);
+					this.names.userArray.splice(ind,1);
+				},
+			}
+			new luckDraw(".btn",{
+					//抽奖用户列表
+					userArray : [
+						{"name" : "张三","avatar":"<img src='img/1.jpg'>"},
+						{"name" : "李四","avatar":"<img src='img/2.jpg'"},
+						{"name" : "王五","avatar":"<img src='img/3.jpg'>"}
+					]
+				})
+			//可将抽奖用户通过参数传递
+			/*
+				实例化时传入的参数格式如：
+				{
+					//抽奖用户列表
+					userArray : [
+						{"name" : "张三","avatar":"用户头像"},
+						{"name" : "李四","avatar":"用户头像"},
+						{"name" : "王五","avatar":"用户头像"}
+					]
+				}
+			*/
+		</script>
+	</body>
+</html>

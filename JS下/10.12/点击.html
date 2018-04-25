@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        div p,div h1,div h2{
+            width:20px;
+            height:20px;
+            background:orange;
+            margin-bottom:2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+</body>
+    <script>
+        function Css(str,tagname){
+            this.tagname=tagname;
+            this.tar=document.querySelector(str);
+            this.addStyle();
+            this.eventAdd();
+        }
+        Css.prototype.eventAdd=function(){
+            var that=this;
+            this.tar.onclick=function(){
+                var tag=document.createElement(that.tagname);
+                this.appendChild(tag);
+            }
+            console.log(this);
+        }
+
+        Css.prototype.addStyle=function(){
+            this.tar.style.cssText="width:100px;height:100px;background:skyblue;margin-bottom:10px";
+        }
+
+        var obj=new Css(".box","p");
+        var obj1=new Css(".box1","h1");
+        var obj2=new Css(".box2","h2");
+
+    </script>
+</html>

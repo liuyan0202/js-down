@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*function showNum(){
+			this.num = 26;
+			this.num++;
+		}
+		showNum();
+		console.log(num);
+
+		var a = "zs";
+		console.log(window.a);
+		var fun = function(){
+			alert('window');
+		}
+		window.fun();*/
+		/*var num = 20;
+		var obj = {
+			num:14,
+			shownum:function(){
+				this.num++;
+				return this.num;
+			}
+		}
+		//方法调用
+		alert(obj.shownum());
+		//隐式调用
+		alert(obj.shownum.apply());
+		alert(obj.shownum.call());
+		var fun = obj.shownum;
+		//函数调用
+		alert(fun());*/
+
+
+		var arr = ['今天','刘学思','罚站'];
+		//arr.forEach(alert);
+		//arr.forEach()
+		var str = "下雨啦";
+		//arr.forEach.call(str,alert);
+		arr.forEach.apply(str,[alert]);
+	</script>
+</body>
+</html>

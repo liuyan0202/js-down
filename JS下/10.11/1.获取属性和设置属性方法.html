@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" data="55"></div>
+    <div class="boxs"></div>
+
+</body>
+<script>
+    function $(str){//获取dom节点的函数$();
+        var tar=document.querySelector(str);
+        return {
+            attr:function(){
+                if(arguments.length===1){
+                    return tar.getAttribute(arguments[0]);
+                }
+                else{
+                    tar.setAttribute(arguments[0],arguments[1]);
+                }
+            }
+        }
+    }
+    console.log($("#box").attr("data"));//$()下的attr方法
+    console.log($(".boxs").attr("name","zs"));
+</script>
+</html>

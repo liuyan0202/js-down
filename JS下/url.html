@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id="text" style="width: 300px;height: 300px;display: block;">
+		
+	</textarea>
+	<button>评论</button>
+	<script>
+		
+
+		var str = 'http://www.baidu.com';
+		var str1 = 'http://51jinbang.cn';
+		var str2 = 'https://www.yamei.com';
+		var reg = /^https?:\/\/(www\.)?\w+\.(com|cn)$/;
+
+
+		var str4 = '[a,b,c]',
+			str5 = '[abc]';
+
+		var reg1 = /^\[.+\]$/;
+
+
+		var data1 = '2017/7/10',
+			data2 = '2017-10-1';
+
+		var reg3 = /^\d{4}([\/-]\d{1,2}){2}$/;
+
+		var reg4 = /[^0-9]/;
+
+
+		function ltrim(str){
+			return str.replace(/^\s+/,"");
+		}
+		function rtrim(str){
+			return str.replace(/\s+$/,"");
+		}
+		function Alltrim(str){
+			return str.replace(/\s/g,"");
+		}
+		function trim(str){
+			return str.replace(/^\s+|\s+$/g,"");
+		}
+		console.log(ltrim('     ab c    ').length);
+		console.log(rtrim('     ab c    ').length);
+		console.log(Alltrim('     ab c    ').length);
+		console.log(trim('     ab c    ').length);
+
+
+		var btn = document.getElementsByTagName('button')[0],
+			textarea = document.getElementsByTagName('textarea')[0];
+		var text = ['法轮功','八维','1601A','跳楼'];
+		btn.onclick = function(){
+			var val = trim(textarea.value);
+			for(var i=0,len=text.length;i<len;i++){
+				var reg = new RegExp(text[i],'g');
+				var str = "";
+				for(var j=0;j<text[i].length;j++){
+					str+="*";
+				}
+				//console.log(val.replace(reg,str));
+				val = val.replace(reg,str);
+			}
+			alert(val);
+		}
+
+	</script>
+</body>
+</html>

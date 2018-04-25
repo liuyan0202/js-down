@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+            box-sizing:border-box;
+        }
+        #select{
+            width:200px;
+            margin:100px auto;
+        }
+        #select h2{
+            width:100%;
+            font-size:22px;
+            font-weight:normal;
+            border:1px solid #000;
+            text-align:center;
+            color:#fff;
+            background:pink;
+        }
+        #select ul{
+            width:100%;
+            text-align:center;
+            overflow:hidden;
+            height:0;
+            transition:height .5s;
+
+
+        }
+        #select ul li{
+            width:100%;
+            height:30px;
+            line-height:30px;
+            text-align:center;
+            border:1px solid #000;
+            border-top:none;
+        }
+        #select ul li.hover{
+            background:skyblue;
+            color:#fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="select">
+        <h2>请选择歌曲</h2>
+        <ul id="ul">
+
+        </ul>
+    </div>
+    <script>
+        var arr=["带你去旅行","尽头","原谅","消愁"];
+        var slect=document.getElementById("slect"),
+            music=document.getElementsByTagName("h2")[0],
+            oul=document.getElementById("ul");
+        for(var i=0;i<arr.length;i++){
+            var ali=document.createElement("li");
+            ali.innerHTML=arr[i];
+            oul.appendChild(ali);
+        }
+        var alis=oul.children;
+        var lih=ali.offsetHeight,
+            h=lih*arr.length;
+        music.addEventListener("click",function(e){
+            var evn=e||window.event;
+            if(evn.stopPropagation){
+                evn.stopPropagation();
+            }else{
+                evn.cancelBubble=true;
+            }
+            oul.style.height=h+"px";
+
+        },false);
+       oul.onmouseover=function(e){
+            var evn=e||window.event;
+            var tar=evn.target||evn.srcElement;
+            if(tar.nodeName==="LI"){
+                for(var i=0;i<alis.length;i++){
+                    alis[i].classList.remove("hover");
+                }
+                tar.classList.add("hover");
+            }
+
+       }
+       oul.onclick=function(e){
+        var evn=e||window.event;
+        var tar=evn.target||evn.srcElement;
+        if(tar.tagName==="LI"){
+            music.innerHTML=tar.innerHTML;
+            oul.style.height="0px";
+        }
+       }
+       document.onclick=function(){
+        oul.style.height="0px";
+       }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*var arr=["北京","八维"];
+        function fun(v,i){
+            console.log(v,i);
+        }
+        function add(a,b){//a为数组里的值,b为每个值所对应的下标
+            for(var i=0;i<arr.length;i++){
+                b(arr[i],i)//把fun作为值传给b,b里的第一个值为arr[i],第二个值为下标
+            }
+        }add(arr,fun);//把函数fun作为参数传入
+*/
+
+        var arr=['a','b','c'];
+        function fun(array,index){
+            console.log(array,index);
+        }
+        function foreach(arr,fun){
+            for(var i=0;i<arr.length;i++){
+                fun(arr[i],index);
+            }
+        }
+        foreach(arr,function fun(value,index,fun){
+
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+
+        }
+        .box{
+            width:300px;
+            height:200px;
+            border:1px solid #ccc;
+            box-shadow:2px 2px 2px #eee;
+            border-radius:10px;
+            text-align:center;
+            margin:30px auto;
+            position:absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+        }
+        span{
+            width:30px;
+            height:30px;
+            background:#ccc;
+            font-size:16px;
+            text-align:center;
+            line-height:30px;
+            display:inline-block;
+            float:right;
+        }
+        h1{
+            font-size:24px;
+            width:100%;
+            height:50px;
+            text-align:center;
+            line-height:50px;
+            margin:30px 0 50px;
+
+        }
+        b{
+            padding:4px 10px;
+            background:#eee;
+
+        }
+    </style>
+</head>
+<body>
+    <button type="" id="btn">点击</button>
+    <button type="" id="movebtn">拖拽</button>
+    <!-- <div class="box">
+        <span>x</span>
+        <h1>今天是星期六</h1>
+        <b>确定</b>
+    </div> -->
+
+</body>
+    <script>
+        function Fun(str,obj){
+            this.btn=document.querySelector(str);
+            this.data=obj;
+            this.clk();
+        }
+        Fun.prototype={
+            constructor:Fun,
+            clk:function(){
+                var that=this;
+
+                //console.log(this);
+                this.btn.onclick=function(){
+                    var box=document.createElement("div");
+                    box.className="box";
+                    var close=`<span class="close">x</span>`;
+                    if(!that.data.close){
+                        close="";
+                    }
+                    var bts="";
+                    for(var i=0,len=that.data.butt.length;i<len;i++){
+                        bts+="<b>"+that.data.butt[i]+"</b>";
+                    }
+                    var str=`
+                            ${close}
+                            <h1>${that.data.text}</h1>
+                            <b class="que">确定</b>`;
+                    document.body.appendChild(box);
+                    box.innerHTML+=str;
+                    var cloSe=box.querySelector(".close"),
+                        que=box.querySelector(".que");
+                    cloSe.onclick=function(){
+                        document.body.removeChild(box);
+                    }
+                    que.onclick=function(){
+                        document.body.removeChild(box);
+                    }
+                }
+            }
+        }
+
+        new Fun("#btn",{
+            text:"今天是星期六",
+            close:"true",
+            butt:'[确定]'
+        });
+        function MoveFun(){
+            Fun.apply(this,arguments);
+            this.move();
+        }
+        MoveFun.prototype=Object.create(Fun.prototype);
+        MoveFun.prototype.constructor=MoveFun;
+        MoveFun.prototype.move=function(){
+            document.onmousedown=function(e){
+                var ev=e||window.event;
+                var tar=ev.target||ev.srcElement;
+                if(tar.className=="box"){
+                    var l=ev.clientX-tar.offsetLeft;
+                    var t=ev.clientY-tar.offsetTop;
+                    document.onmousemove=function(e){
+                        var ev=e||window.event;
+                        tar.style.left=ev.clientX-l+30+"px";
+                        tar.style.top=ev.clientY-t+30+"px";
+                    }
+
+                }
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+            }
+
+        }
+
+        new MoveFun("#movebtn",{
+            text:"可拖拽弹窗",
+            close:"true",
+            butt:'[确定]'
+        });
+    </script>
+</html>

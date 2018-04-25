@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+    <script>
+        var Fun=function(n,a){
+            this.name=n;
+            this.age=a;
+        }
+
+
+        var obj1=new Fun("zs",15);
+        var Porson=function(n1,a1){
+            Fun.call(this,n1,a1);
+        }
+        var obj2=new Porson("ls",18);
+        console.log(obj2);
+    </script>
+</html>

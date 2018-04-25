@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //封装map方法
+        var arr=[3,4,5,6];
+        function map(arr,fun){
+            var newArr=[];
+            for(var i=0;i<arr.length;i++){
+                var num=fun(arr[i]);
+                newArr.push(num);
+            }
+            return newArr;
+        }
+        console.log(map(arr,function(v){
+            return v*2;
+        }));
+    </script>
+
+</body>
+</html>

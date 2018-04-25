@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .wrap{
+            margin:20px auto;
+            width:600px;
+        }
+        #list li.chek{
+            background:skyblue;
+        }
+        ul{
+            margin-top:5px;
+        }
+        ul li{
+            height:50px;
+            line-height:40px;
+            border-bottom:1px solid #ccc;
+            text-indent:10px;
+        }
+        ul li:first-of-type{
+            border-top:1px solid #ccc;
+        }
+        input{
+            width:80%;
+            height:50px;
+            border:1px solid #ccc;
+            text-indent:10px;
+        }
+        button{
+            width:16%;
+            height:50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <input type="text" name="">
+    <button>搜索</button>
+    <ul id="list">
+    </ul>
+</div>
+
+</body>
+    <script>
+        var data=[
+            "毛不易-消愁",
+            "毛不易-盛夏",
+            "毛不易-深夜一角",
+            "金志文-肩上蝶",
+            "金志文-流着泪说分手",
+            "阿悄-我承认",
+            "阿悄-死皮赖脸"
+        ];
+        var inp=document.getElementsByTagName("input")[0],
+            ul=document.getElementById("list");
+
+        function trim(arr){
+            var reg=/^\s+|\s+$/;
+            return arr.replace(reg,"");//将空格替换掉
+        }
+        inp.addEventListener("input",function(){
+            var val=trim(this.value);
+            if(val==""){
+                ul.innerHTML="";
+            }
+            //console.log(val.length);
+            else{
+                var findval=new RegExp("^"+val);
+                var newdata=data.filter(function(v){
+                return findval.test(v);
+             });
+            //console.log(newcont);
+                var str='';
+                newdata.forEach(function(v,i){
+                    str+="<li>"+v+"</li>";
+                });
+                ul.innerHTML=str;
+                }
+            var sum=0;
+            document.onkeyup=function(e){
+            var ev=e||window.event;
+            var tar=e.target||e.srcElement;
+            //console.log(tar);
+            var lis=ul.children;
+            for(var i=0;i<lis.length;i++){
+                lis[i].onclick=function(){
+                    inp.value=this.innerHTML;
+                }
+            }
+            if(e.keyCode===40){
+                    for(var i=sum;i<lis.length;i++){
+                        sum++;
+                        for(var k=0;k<lis.length;k++){
+                            lis[k].style.background="none";
+                        }
+                        if(sum>=lis.length){
+                            sum=0;
+                        }
+                        lis[i].style.background="skyblue";
+                        return;
+
+                    }
+            }
+        }
+        },false);
+
+
+
+    </script>
+
+
+</html>

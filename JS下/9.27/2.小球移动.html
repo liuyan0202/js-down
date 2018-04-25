@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- 小球定位,左右给值 -->
+    <div id="big" style="position:absolute;left:500px;top:200px">
+        <div id="box" style="width:60px;height:60px;border-radius:50%;background:red;position:absolute;left:0px;top:0px;">
+
+        </div>
+        <div id="move" style="width:60px;height:60px;border-radius:50%;background:pink;position:absolute;left:100px;top:0px;">
+        </div>
+        <div id="cirl" style="width:60px;height:60px;border-radius:50%;background:lime;position:absolute;left:200px;top:0px;">
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.onkeyup=function(e){
+            var e=e||window.event;
+            switch(e.keyCode){//左键键码是37，上键是38，右键是39，下键是40
+                case 37:
+                    big.style.left=big.offsetLeft-10+"px";//盒子在小平方向上的距离每次按键减10px
+                break;
+                case 38:
+                    big.style.top=big.offsetTop-10+"px";
+                break;
+                case 39:
+                    big.style.left=big.offsetLeft+10+"px";
+                break;
+                case 40:
+                    big.style.top=big.offsetTop+10+"px";
+                break;
+            }
+        }
+    </script>
+
+</body>
+</html>

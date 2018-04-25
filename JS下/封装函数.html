@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box" data="1011"></div>
+	<div class="info"></div>
+	<script>
+		/*（1）、attr()
+        attr("name")用于获取dom元素上name属性的属性值
+        attr("data-id","55")用于将dom元素上的data-id属性设置为55*/
+
+        /*（2）、getTypeOf(param);
+         用于返回参数的类型，如：getTypeOf(function(){})返回function，getTypeof([])返回arrray，getTypeof({})返回object。代码尽量简洁高效。*/
+
+         /*用于遍历数组及对象，i为数组的索引或对象的键，v为每一个索引或键对应的值
+        each(["red","green","blue"],funtion(i,v){
+                 // i为0,1,2
+                 // v为red,green,blue
+           })*/
+
+
+
+		function each(a,b){
+			//便利数组得到数组每一个值和下标
+			for(var i=0,len=a.length;i<len;i++){
+				b(i,a[i]);
+			}
+		}
+		each(["red","green","blue"],function(i,v){
+			console.log('下标__'+i+'&&值__'+v);
+	             // i为0,1,2
+	             // v为red,green,blue
+        })
+
+/*		function $(str){
+			var tar = document.querySelector(str);
+			return {
+				attr:function(){
+					if(arguments.length===1){
+						return tar.getAttribute(arguments[0]);
+					}else{
+						tar.setAttribute(arguments[0],arguments[1])
+					}
+
+				}
+			}
+		}
+
+		console.log($('#box').attr('data'));
+		$('#box').attr('name','lxs');
+
+		$('.info').attr('number',53);
+		console.log($('#box'));*/
+
+
+		function $(str){
+			var tar = document.querySelector(str);
+			return {
+				attr:function(){
+					if(arguments.length===1){
+						return tar.getAttribute(arguments[0]);
+					}else if(arguments.length===2){
+						tar.setAttribute(arguments[0],arguments[1]);
+					}
+				}
+			}
+		}
+		$("#box").attr("name","lxs");
+
+		console.log($("#box").attr("id"));
+
+
+		function getTypeof(n){
+			if(typeof n === 'object'){
+				//进一步判断当前类型
+				//构造函数
+				return n.constructor.name;
+			}else{
+				return typeof n;
+			}
+		}
+		alert(getTypeof(new String('str')));
+		alert(getTypeof(1234));
+		alert(getTypeof([1,2,3])); //array
+		alert(getTypeof(function(){}));
+		alert(getTypeof({}))
+
+
+
+		var arr = [1];
+		//对象.constructor
+		//查找当前对象的原型构造函数
+		console.log(arr.constructor.name);
+
+
+	</script>
+</body>
+</html>

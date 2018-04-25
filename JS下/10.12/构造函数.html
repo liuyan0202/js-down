@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    console.log(a);
+    var a="window";
+    function a(){
+
+    }
+
+
+    var a={
+        name:"zls",
+        age:20,
+        friends:['ls','jhj','kj']
+    }
+    console.log(a.name,a.age,a.friends);
+
+
+    var b=new Object();
+        b.name="ke";
+        b.age=19;
+        console.log(b.name);
+
+
+       var Fun=function(){
+            this.name="1601A",
+            this.age=10,
+            this.say=function(){
+                return this.name+","+this.age+"岁了";
+            }
+        }
+        var obj=new Fun();
+        console.log(obj.say());
+        console.log(Fun.prototype);//原型属性
+
+
+        var arr=new Array(1,2,3,4);
+        console.log(Array.prototype);
+
+        var str=new String("abcd");
+        console.log(String.prototype);
+
+        var reg=new RegExp();
+        console.log(RegExp.prototype);
+
+        var date=new Date();
+        console.log(Date.prototype);
+
+        console.log(Window.prototype);
+//属性放在构造函数里，方法放在原型上
+
+        var Info=function (a,b){
+            this.name="zs";
+            this.age=20;
+        }
+        Info.prototype.say(function(){
+            console.log(this.name);
+        })
+</script>
+</html>

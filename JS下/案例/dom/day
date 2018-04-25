@@ -1,0 +1,19 @@
+parentNode.children
+	功能：查找当前父级元素下所有子节点
+	返回值:元素集合
+
+
+
+node.classList
+	功能:查找当前节点的class名
+	返回值：对象
+
+node.classList.add(要添加的类名)
+
+node.classList.remove(要删除的类名)
+
+node.classList.toggle((有删除)/(无添加)的类名)
+
+node.classList.contains(类名)
+	功能：检测当前类名是否存在
+	返回值：boolean

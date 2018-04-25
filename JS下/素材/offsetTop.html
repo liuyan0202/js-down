@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" style="width: 300px;height: 2000px;background: red;margin: 100px;padding-top:200px;position: relative;">
+		<div class="box1" style="width: 100px;height: 200px;background: yellow;"></div>
+	</div>
+	<script>
+		var box1 = document.querySelector('.box1');
+		
+		function offset(tar){
+			var t = 0;
+			while(tar.offsetParent){
+				t += tar.offsetTop;
+				tar = tar.offsetParent;
+			}
+			return t;
+		}
+		console.log(offset(box1));
+	</script>
+</body>
+</html>

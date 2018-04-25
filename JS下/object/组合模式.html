@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var Info = function(n,a){
+			this.name = n;
+			this.age = a;
+			/*this.say = function(){
+				alert(this.name)
+			}*/
+		}
+		Info.prototype.say = function(){
+			alert(this.name)
+		}
+		var a = new Info('zs',13);
+		var b = new Info('ww',15);
+		a.say();
+		b.say();
+		console.log(a,b);
+
+	</script>
+</body>
+</html>

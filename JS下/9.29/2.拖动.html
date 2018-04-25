@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #one{
+            width:800px;
+            height:40px;
+            background:skyblue;
+            margin:0 auto 200px;
+            position:relative;
+        }
+        .two{
+            width:0;
+            height:40px;
+            position:absolute;
+            left:0;
+            top:0;
+            background:#ccc;
+            z-index:99;
+        }
+        .box{
+            width:40px;
+            height:50px;
+            background:pink;
+            position:absolute;
+            left:0;
+            top:-5px;
+            cursor:pointer;
+        }
+        p{
+            margin:200px 0 0 200px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <p>0/160</p>
+    <div id="one">
+        <div class="two"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        var p=document.getElementsByTagName('p')[0],
+            one=document.getElementById('one'),
+            two=document.getElementsByClassName("two")[0],
+            box=document.getElementsByClassName("box")[0];
+        box.onmousedown=function(e){
+            var ev=e||window.event;
+            var left=ev.pageX-box.offsetLeft;
+            document.onmousemove=function(e){
+                var ev=e||window.event;
+                if(ev.clientX>one.offsetLeft&&ev.clientX<one.offsetLeft+one.offsetWidth+box.offsetWidth){
+                    box.style.left=ev.pageX-left+"px";
+                    two.style.width=ev.pageX-left+"px";
+                var num=parseInt((ev.pageX-left)/(one.offsetWidth/160));
+                if(num>160){
+                    num=160;
+                }else if(num<0){
+                    num=0;
+                }
+                    p.innerHTML=num+"/"+160;
+                }
+
+                }
+
+                }
+
+        document.onmouseup=function(){
+            document.onmousemove=null;
+        }
+        /*box.onmousedown=function(e){
+            var ev=e||window.event;
+            box.style.left=ev.clientX;
+            box.style.top=ev.clientY;
+            var left=ev.clientX-box.offsetLeft;
+                //top=ev.clientY-box.offsetTop;
+            document.onmousemove=function(e){
+                var ev=e||window.event;
+                box.style.left=ev.clientX-left+"px";
+                //box.style.top=ev.clientY-top+"px";
+            }
+        }
+        document.onmouseup=function(){
+                document.onmousemove=null;
+        }
+*/
+    </script>
+
+</body>
+</html>
